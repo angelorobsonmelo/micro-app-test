@@ -16,6 +16,8 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.Mockito
+import org.mockito.Mockito.verify
 
 
 @RunWith(AndroidJUnit4::class)
@@ -23,21 +25,16 @@ class FirstFragmentTest {
 
     @Test
     fun testNavitationScreen() {
-        // Create a mock NavController
-//        val mockNavController = mock(NavController::class.java)
-
-
-        val scenario = launchFragmentInContainer<FirstFragment>(themeResId = R.style.AppTheme2)
+        val mockNavController = Mockito.mock(NavController::class.java)
+        val scenario = launchFragmentInContainer<FirstFragment>(themeResId = R.style.AppTheme)
 
         scenario.onFragment {
-//            Navigation.setViewNavController(it.requireView())
-
+            Navigation.setViewNavController(it.requireView(), mockNavController)
         }
 
         onView(withId(R.id.button)).perform(click())
 
-//        onView(withId(R.id.textView)).check(matches(isDisplayed()))
-
+        verify(mockNavController).navigate(R.id.action_firstFragment_to_secondFragment)
     }
 
 }

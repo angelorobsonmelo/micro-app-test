@@ -128,6 +128,7 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:2.23.0'
     testImplementation "org.mockito:mockito-inline:2.16.0"
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0"
+    androidTestImplementation 'org.mockito:mockito-android:2.28.2'
 
     testImplementation 'android.arch.core:core-testing:1.1.1'
 
