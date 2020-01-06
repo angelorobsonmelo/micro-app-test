@@ -26,8 +26,6 @@
                 android:id="@+id/event_city"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="false"
                 android:inputType="textNoSuggestions"
                 app:validateEmpty="@{true}"
                 app:validateTypeAutoDismiss="@{true}" />
