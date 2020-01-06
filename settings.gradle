@@ -1,0 +1,2 @@
+include ':app', ':microapplibrary'
+rootProject.name='Micro App Viaverejo'
