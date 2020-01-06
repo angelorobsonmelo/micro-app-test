@@ -3,11 +3,10 @@ package br.com.soluevo.microapplibrary
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class MicroLibraryMainActivity : AppCompatActivity() {
+class NavigationHostActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setTheme(R.style.AppThemeLibrary)
-        setContentView(R.layout.activity_main_micro)
+        setContentView(R.layout.host_navigation_activity)
     }
 }
