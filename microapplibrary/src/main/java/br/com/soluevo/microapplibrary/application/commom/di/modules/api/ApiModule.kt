@@ -1,6 +1,7 @@
 package br.com.soluevo.microapplibrary.application.commom.di.modules.api
 
 
+import br.com.soluevo.microapplibrary.service.remote.ProductApiDataSource
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -9,22 +10,10 @@ import javax.inject.Singleton
 @Module
 class ApiModule {
 
-    /*@Provides
-    @Singleton
-    fun provideUserApiDataSource(retrofit: Retrofit): UserApiDataSource {
-        return retrofit.create(UserApiDataSource::class.java)
-    }
-
     @Provides
     @Singleton
-    fun provideEventsApiDataSource(retrofit: Retrofit): EventsApiDataSource {
-        return retrofit.create(EventsApiDataSource::class.java)
+    fun productApiDataSource(retrofit: Retrofit): ProductApiDataSource {
+        return retrofit.create(ProductApiDataSource::class.java)
     }
-
-    @Provides
-    @Singleton
-    fun provideFavoriteApiRemoteDataSource(retrofit: Retrofit): FavoriteApiRemoteDataSource {
-        return retrofit.create(FavoriteApiRemoteDataSource::class.java)
-    }*/
 
 }
