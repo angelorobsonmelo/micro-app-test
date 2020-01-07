@@ -33,6 +33,25 @@ android {
     androidExtensions {
         experimental = true
     }
+
+    flavorDimensions "default"
+    productFlavors {
+        staging {
+            buildConfigField("String", "BASE_URL", "\"https://cobrei-staging.herokuapp.com/\"")
+        }
+
+        mockServer {
+            buildConfigField("String", "BASE_URL", "\"http://localhost:8080/\"")
+        }
+
+        local {
+            buildConfigField("String", "BASE_URL", "\"http://192.168.0.104:8080/api/rest/\"")
+        }
+
+        prod {
+            buildConfigField("String", "BASE_URL", "\"http://prod.com/\"")
+        }
+    }
 }
 
 dependencies {
