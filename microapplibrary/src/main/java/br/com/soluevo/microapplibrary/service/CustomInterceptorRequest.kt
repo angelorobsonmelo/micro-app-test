@@ -1,6 +1,6 @@
 package br.com.soluevo.microapplibrary.service
 
-import br.com.soluevo.microapplibrary.application.utils.handlers.handlerstatuscode.HandlerErrorStatusCode
+import br.com.soluevo.microapplibrary.application.commom.utils.handlers.handlerstatuscode.HandlerErrorStatusCode
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
