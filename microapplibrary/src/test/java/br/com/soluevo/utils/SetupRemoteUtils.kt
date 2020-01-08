@@ -5,17 +5,12 @@ import io.reactivex.plugins.RxJavaPlugins
 import io.reactivex.schedulers.Schedulers
 import org.junit.AfterClass
 import org.junit.BeforeClass
-import org.junit.Rule
-import org.mockito.junit.MockitoJUnit
 
 abstract class SetupRemoteUtils {
 
-    @Rule
-    @JvmField
-    val rule = MockitoJUnit.rule()!!
-
 
     companion object {
+
         @BeforeClass
         @JvmStatic
         fun setupClass() {
@@ -25,9 +20,12 @@ abstract class SetupRemoteUtils {
 
         @AfterClass
         @JvmStatic
+        @Throws(Exception::class)
         fun tearDownClass() {
             RxJavaPlugins.reset()
             RxAndroidPlugins.reset()
         }
     }
+
+
 }

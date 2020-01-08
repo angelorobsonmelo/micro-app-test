@@ -71,14 +71,14 @@ class ProductsViewModelTest : SetupRemoteUtils() {
         }
 
         @Test
-        fun `It should call ss successObserver`() {
+        fun `It never should call errorObserver`() {
             eventsViewModel.errorObserver
                 .test()
                 .assertNoValue()
         }
 
         @Test
-        fun `It should call sss successObserver`() {
+        fun `It never should call emptyObserver`() {
             eventsViewModel.emptyObserver
                 .test()
                 .assertNoValue()
@@ -88,10 +88,6 @@ class ProductsViewModelTest : SetupRemoteUtils() {
 
     internal class Context_Is_Loading : Contex_setup() {
 
-        @Before
-        override fun setUp() {
-            super.setUp()
-        }
 
         @Test
         fun `It should call isLoadingObserver`() {
@@ -123,14 +119,14 @@ class ProductsViewModelTest : SetupRemoteUtils() {
         }
 
         @Test
-        fun `It should call ss successObserver`() {
+        fun `It never should call ss errorObserver`() {
             eventsViewModel.errorObserver
                 .test()
                 .assertNoValue()
         }
 
         @Test
-        fun `It should call sss successObserver`() {
+        fun `It never should call successObserver`() {
             eventsViewModel.successObserver
                 .test()
                 .assertNoValue()
@@ -151,15 +147,22 @@ class ProductsViewModelTest : SetupRemoteUtils() {
         }
 
         @Test
-        fun `It should call isEmptyObserver`() {
-            eventsViewModel.emptyObserver
+        fun `It never should call errorObserver`() {
+            eventsViewModel.errorObserver
+                .test()
+                .assertHasValue()
+        }
+
+        @Test
+        fun `It never should call successObserver`() {
+            eventsViewModel.successObserver
                 .test()
                 .assertNoValue()
         }
 
         @Test
-        fun `It should call s isEmptyObserver`() {
-            eventsViewModel.successObserver
+        fun `It never should call emptyObserver`() {
+            eventsViewModel.emptyObserver
                 .test()
                 .assertNoValue()
         }
