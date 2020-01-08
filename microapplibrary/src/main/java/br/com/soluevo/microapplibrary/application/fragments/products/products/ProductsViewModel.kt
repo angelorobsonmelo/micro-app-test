@@ -23,7 +23,12 @@ class ProductsViewModel @Inject constructor(
             .doAfterTerminate { loadingFinished() }
             .subscribe(
                 {
-                    successObserver.value = EventLiveData(it)
+                    if (it.size > 0) {
+                        successObserver.value = EventLiveData(it)
+                        return@subscribe
+                    }
+
+                    emptyObserver.value = EventLiveData(true)
                 },
                 {
                     errorObserver.value = EventLiveData(it.localizedMessage)
