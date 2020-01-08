@@ -38,7 +38,7 @@ android {
             buildConfigField("String", "BASE_URL", "\"https://private-c04e04-viavarejo1.apiary-mock.com\"")
         }
 
-        mockServer {
+        mock {
             buildConfigField("String", "BASE_URL", "\"http://localhost:8080/\"")
         }
 
@@ -95,6 +95,10 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0'
     kapt 'com.android.databinding:compiler:3.3.1'
 
+    // Databinding for test
+    kaptAndroidTest 'androidx.databinding:databinding-compiler:3.5.3'
+
+
     // Multidex
     implementation 'com.android.support:multidex:1.0.3'
 
@@ -136,6 +140,8 @@ dependencies {
     // Image rounded
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
+    implementation 'androidx.fragment:fragment:1.2.0-rc04'
+
     testImplementation 'junit:junit:4.12'
 
     // Robolectric environment
@@ -163,8 +169,10 @@ dependencies {
 
     androidTestImplementation 'androidx.annotation:annotation:1.1.0'
 
+    // Library mock to web server
+    androidTestImplementation 'com.squareup.okhttp:mockwebserver:2.7.2'
+    testImplementation 'com.squareup.okhttp3:mockwebserver:3.14.1'
 
-    implementation 'androidx.fragment:fragment:1.2.0-rc04'
     debugImplementation 'androidx.fragment:fragment-testing:1.2.0-rc04'
 
 }

@@ -1,0 +1,54 @@
+[
+  {
+    "id": 1,
+    "price": 40.0,
+    "title": "orem ipsum dolor sit amet.",
+    "description": "rem ipsum dolor sit amet, consectetur adipiscing elit. Ut viverra ullamcorper lectus, vitae tempor leo lacinia vestibulum. Pellentesque elit lorem, elementum tristique nisl sed, ornare scelerisque tellus",
+    "pictures": [
+      {
+        "id": 1,
+        "title": "titulo 1",
+        "url": "https://static.netshoes.com.br/produtos/tenis-zeus-esportivo-masculino/16/337-9918-216/337-9918-216_zoom1.jpg"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "price": 50.0,
+    "title": "orem ipsum dolor sit amet. 2",
+    "description": "rem ipsum dolor sit amet, consectetur adipiscing elit. Ut viverra ullamcorper lectus, vitae tempor leo lacinia vestibulum. Pellentesque elit lorem, elementum tristique nisl sed, ornare scelerisque tellus",
+    "pictures": [
+      {
+        "id": 1,
+        "title": "titulo 2",
+        "url": "https://static.netshoes.com.br/produtos/tenis-zeus-esportivo-masculino/16/337-9918-216/337-9918-216_zoom1.jpg"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "price": 60.0,
+    "title": "orem ipsum dolor sit amet. 2",
+    "description": "rem ipsum dolor sit amet, consectetur adipiscing elit. Ut viverra ullamcorper lectus, vitae tempor leo lacinia vestibulum. Pellentesque elit lorem, elementum tristique nisl sed, ornare scelerisque tellus",
+    "pictures": [
+      {
+        "id": 1,
+        "title": "titulo 2",
+        "url": "https://static.netshoes.com.br/produtos/tenis-zeus-esportivo-masculino/16/337-9918-216/337-9918-216_zoom1.jpg"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "price": 70.0,
+    "title": "orem ipsum dolor sit amet. 2",
+    "description": "rem ipsum dolor sit amet, consectetur adipiscing elit. Ut viverra ullamcorper lectus, vitae tempor leo lacinia vestibulum. Pellentesque elit lorem, elementum tristique nisl sed, ornare scelerisque tellus",
+    "pictures": [
+      {
+        "id": 1,
+        "title": "titulo 2",
+        "url": "https://static.netshoes.com.br/produtos/tenis-zeus-esportivo-masculino/16/337-9918-216/337-9918-216_zoom1.jpg"
+      }
+    ]
+  }
+]

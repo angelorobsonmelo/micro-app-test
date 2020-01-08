@@ -71,7 +71,6 @@ class ProductsFragment : BindingFragment<ProductsFragmentBinding>() {
 
     private fun initObservables() {
         mViewModel.successObserver.observe(viewLifecycleOwner, EventObserver {
-            print(it)
             mAdapter.updateData(it)
         })
     }
