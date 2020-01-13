@@ -6,12 +6,14 @@ import android.os.Bundle
 import androidx.core.content.ContextCompat
 import br.com.soluevo.microapplibrary.application.commom.utils.Constants
 import br.com.soluevo.microapplibrary.application.commom.utils.Constants.CompanyThemeConstant.EXTRA_COMPANY_THEME
+import br.com.soluevo.microapplibrary.application.commom.utils.listeners.OnBackPressedListener
 import br.com.soluevo.microapplibrary.domain.CompanyThemeConfig
 import kotlinx.android.synthetic.main.host_navigation_activity.*
 
 class NavigationHostActivity : AppCompatActivity() {
 
     private var url = ""
+    private var mOnBackPressedListener: OnBackPressedListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,8 +32,19 @@ class NavigationHostActivity : AppCompatActivity() {
 
     fun getUrl(): String = url
 
+    fun onBackPressedListener(onBackPressedListener: OnBackPressedListener) {
+        this.mOnBackPressedListener = onBackPressedListener
+    }
+
+    fun finishActivity() {
+        finish()
+    }
+
     override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
+        mOnBackPressedListener?.apply {
+            onBackPressedClicked()
+        }
+
+        return false
     }
 }

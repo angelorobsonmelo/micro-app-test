@@ -15,6 +15,7 @@ import br.com.soluevo.microapplibrary.application.commom.di.modules.application.
 import br.com.soluevo.microapplibrary.application.commom.di.modules.network.NetWorkModule
 import br.com.soluevo.microapplibrary.application.commom.di.modules.recyclerview.RecyclerViewAnimatedWithDividerModule
 import br.com.soluevo.microapplibrary.application.commom.utils.BindingFragment
+import br.com.soluevo.microapplibrary.application.commom.utils.listeners.OnBackPressedListener
 import br.com.soluevo.microapplibrary.application.fragments.products.products.adapter.ProductsAdapter
 import br.com.soluevo.microapplibrary.databinding.ProductsFragmentBinding
 import br.com.soluevo.microapplibrary.domain.Product
@@ -58,6 +59,13 @@ class ProductsFragment : BindingFragment<ProductsFragmentBinding>() {
     private fun setUpDagger() {
         val ac = activity as NavigationHostActivity
         val url = ac.getUrl()
+
+        ac.onBackPressedListener(object : OnBackPressedListener {
+            override fun onBackPressedClicked() {
+                ac.finishActivity()
+            }
+
+        })
 
         DaggerFragmentGenericWithRecyclerViewComponent.builder()
             .contextModule(ContextModule(requireContext()))
