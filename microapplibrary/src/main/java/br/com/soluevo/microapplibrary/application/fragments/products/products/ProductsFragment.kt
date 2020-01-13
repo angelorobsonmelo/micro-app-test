@@ -7,10 +7,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import br.com.soluevo.microapplibrary.NavigationHostActivity
 import br.com.soluevo.microapplibrary.R
 import br.com.soluevo.microapplibrary.application.commom.EventObserver
 import br.com.soluevo.microapplibrary.application.commom.di.components.fragments.DaggerFragmentGenericWithRecyclerViewComponent
 import br.com.soluevo.microapplibrary.application.commom.di.modules.application.ContextModule
+import br.com.soluevo.microapplibrary.application.commom.di.modules.network.NetWorkModule
 import br.com.soluevo.microapplibrary.application.commom.di.modules.recyclerview.RecyclerViewAnimatedWithDividerModule
 import br.com.soluevo.microapplibrary.application.commom.utils.BindingFragment
 import br.com.soluevo.microapplibrary.application.fragments.products.products.adapter.ProductsAdapter
@@ -53,8 +55,12 @@ class ProductsFragment : BindingFragment<ProductsFragmentBinding>() {
     }
 
     private fun setUpDagger() {
+        val ac = activity as NavigationHostActivity
+        val url = ac.getUrl()
+
         DaggerFragmentGenericWithRecyclerViewComponent.builder()
-            .contextModule(ContextModule(context!!))
+            .contextModule(ContextModule(requireContext()))
+            .netWorkModule(NetWorkModule(url))
             .recyclerViewAnimatedWithDividerModule(
                 RecyclerViewAnimatedWithDividerModule(
                     binding.recyclerView,

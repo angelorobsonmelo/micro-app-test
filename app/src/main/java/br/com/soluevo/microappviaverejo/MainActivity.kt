@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import br.com.soluevo.microapplibrary.NavigationHostActivity
 import br.com.soluevo.microapplibrary.application.commom.utils.Constants.CompanyThemeConstant.EXTRA_COMPANY_THEME
+import br.com.soluevo.microapplibrary.application.commom.utils.Constants.EXTRA_CONSTANTS.URL_BASE
 import br.com.soluevo.microapplibrary.domain.CompanyThemeConfig
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, NavigationHostActivity::class.java).apply {
             val bundle = Bundle()
             bundle.putSerializable(EXTRA_COMPANY_THEME, companyThemeConfig)
+            bundle.putString(URL_BASE, "https://private-c04e04-viavarejo1.apiary-mock.com/")
             putExtras(bundle)
         }
 

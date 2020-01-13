@@ -11,6 +11,8 @@ import kotlinx.android.synthetic.main.host_navigation_activity.*
 
 class NavigationHostActivity : AppCompatActivity() {
 
+    private var url = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.host_navigation_activity)
@@ -19,9 +21,12 @@ class NavigationHostActivity : AppCompatActivity() {
             extras?.apply {
                 val themeConfig = getSerializable(EXTRA_COMPANY_THEME) as CompanyThemeConfig
                 appbar.setBackgroundColor(Color.parseColor(themeConfig.bottomBarHex))
+                url = getString(Constants.EXTRA_CONSTANTS.URL_BASE, "")
             }
 
         }
 
     }
+
+    fun getUrl(): String = url
 }

@@ -20,7 +20,7 @@ import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
-class NetWorkModule {
+class NetWorkModule(private val url: String) {
 
     @Provides
     @Singleton
@@ -89,7 +89,7 @@ class NetWorkModule {
     fun provideRetrofit(okHttpClient: OkHttpClient, gson: Gson): Retrofit {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create(gson))
-            .baseUrl("https://private-c04e04-viavarejo1.apiary-mock.com/")
+            .baseUrl(url)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)
             .build()
