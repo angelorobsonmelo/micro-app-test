@@ -1,6 +1,9 @@
 package br.com.soluevo.microapplibrary.application.commom.utils
 
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.host_navigation_activity.*
 
 
 open class FragmentBase : Fragment() {
@@ -59,17 +62,17 @@ open class FragmentBase : Fragment() {
 //    }
 //
 //
-//    fun showToolbarWithDisplayArrowBack(title: String) {
-//        val toolbar = activity?.toolbar
-//        toolbar?.visibility = View.VISIBLE
-//        toolbar?.title = title
-//
-//        val appCompatActivity = activity as AppCompatActivity?
-//
-//        appCompatActivity?.setSupportActionBar(toolbar)
-//        appCompatActivity?.supportActionBar?.setDisplayShowTitleEnabled(true)
-//        appCompatActivity?.supportActionBar?.setDisplayHomeAsUpEnabled(true)
-//    }
+    fun showToolbarWithDisplayArrowBack(title: String) {
+        val toolbar = activity?.toolbar
+        toolbar?.visibility = View.VISIBLE
+        toolbar?.title = title
+
+        val appCompatActivity = activity as AppCompatActivity?
+
+        appCompatActivity?.setSupportActionBar(toolbar)
+        appCompatActivity?.supportActionBar?.setDisplayShowTitleEnabled(true)
+        appCompatActivity?.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
 //
 //    fun showToolbarWithoutDisplayArrowBack(title: String) {
 //        val toolbar = activity?.toolbar

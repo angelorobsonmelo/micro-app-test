@@ -12,7 +12,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        finish()
         val companyThemeConfig = CompanyThemeConfig("#CD5C5C", "#FFA07A")
 
         val intent = Intent(this, NavigationHostActivity::class.java).apply {

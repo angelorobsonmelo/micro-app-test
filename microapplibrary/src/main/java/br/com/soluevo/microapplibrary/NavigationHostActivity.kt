@@ -29,4 +29,9 @@ class NavigationHostActivity : AppCompatActivity() {
     }
 
     fun getUrl(): String = url
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
 }

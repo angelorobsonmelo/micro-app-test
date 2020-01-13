@@ -52,6 +52,7 @@ class ProductsFragment : BindingFragment<ProductsFragmentBinding>() {
         setUpDataBinding()
         mViewModel.getProducts()
         initObservables()
+        showToolbarWithDisplayArrowBack("Voltar")
     }
 
     private fun setUpDagger() {
