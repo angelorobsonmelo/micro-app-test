@@ -32,7 +32,7 @@ android {
         }
     }
 
-    flavorDimensions "default"
+    /*flavorDimensions "default"
     productFlavors {
         staging {
             buildConfigField("String", "BASE_URL", "\"https://private-c04e04-viavarejo1.apiary-mock.com\"")
@@ -49,7 +49,7 @@ android {
         prod {
             buildConfigField("String", "BASE_URL", "\"http://prod.com/\"")
         }
-    }
+    }*/
 
     dataBinding {
         enabled true
