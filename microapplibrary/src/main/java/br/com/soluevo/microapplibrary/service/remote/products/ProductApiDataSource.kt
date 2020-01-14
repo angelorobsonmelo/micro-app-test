@@ -1,4 +1,4 @@
-package br.com.soluevo.microapplibrary.service.remote
+package br.com.soluevo.microapplibrary.service.remote.products
 
 import br.com.soluevo.microapplibrary.domain.Product
 import io.reactivex.Observable

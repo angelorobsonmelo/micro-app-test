@@ -123,6 +123,9 @@ dependencies {
 
     implementation 'androidx.fragment:fragment:1.2.0-rc04'
 
+    // Circle image
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
+
     testImplementation 'junit:junit:4.12'
 
     // Robolectric environment

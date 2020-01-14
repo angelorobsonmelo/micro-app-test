@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import br.com.soluevo.microapplibrary.application.commom.di.utils.ViewModelFactory
 import br.com.soluevo.microapplibrary.application.commom.di.utils.ViewModelKey
+import br.com.soluevo.microapplibrary.application.components.companies.CompaniesViewModel
 import br.com.soluevo.microapplibrary.application.fragments.products.products.ProductsViewModel
 
 import dagger.Binds
@@ -20,5 +21,10 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ProductsViewModel::class)
     internal abstract fun productsViewModel(productViewModel: ProductsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CompaniesViewModel::class)
+    internal abstract fun companiesViewModel(productViewModel: CompaniesViewModel): ViewModel
 
 }

@@ -1,22 +1,22 @@
-package br.com.soluevo.microapplibrary.application.fragments.products.products
+package br.com.soluevo.microapplibrary.application.components.companies
 
 import br.com.soluevo.microapplibrary.application.commom.EventLiveData
 import br.com.soluevo.microapplibrary.application.commom.utils.BaseViewModel
-import br.com.soluevo.microapplibrary.domain.Product
-import br.com.soluevo.microapplibrary.service.remote.products.ProductApiDataSource
+import br.com.soluevo.microapplibrary.domain.Company
+import br.com.soluevo.microapplibrary.service.remote.companies.CompaniesApiDataSource
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class ProductsViewModel @Inject constructor(
-    private val apiDataSource: ProductApiDataSource
-) : BaseViewModel<List<Product>>() {
+class CompaniesViewModel @Inject constructor(
+    private val apiDataSource: CompaniesApiDataSource
+) : BaseViewModel<List<Company>>() {
 
     val disposables = CompositeDisposable()
 
-    fun getProducts() {
-        val disposable = apiDataSource.getProducts()
+    fun getCompanies() {
+        val disposable = apiDataSource.getCompanies()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { loadingStarted() }
@@ -37,5 +37,4 @@ class ProductsViewModel @Inject constructor(
 
         disposables.add(disposable)
     }
-
 }
