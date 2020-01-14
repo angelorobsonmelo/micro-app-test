@@ -7,7 +7,6 @@ import br.com.soluevo.microapplibrary.application.commom.utils.Constants
 import br.com.soluevo.microapplibrary.application.commom.utils.Constants.CompanyThemeConstant.EXTRA_COMPANY
 import br.com.soluevo.microapplibrary.application.commom.utils.listeners.OnBackPressedListener
 import br.com.soluevo.microapplibrary.domain.Company
-import br.com.soluevo.microapplibrary.domain.CompanyThemeConfig
 import kotlinx.android.synthetic.main.host_navigation_activity.*
 
 class NavigationHostActivity : AppCompatActivity() {
@@ -22,7 +21,7 @@ class NavigationHostActivity : AppCompatActivity() {
         intent.apply {
             extras?.apply {
                 val company = getSerializable(EXTRA_COMPANY) as Company
-                val companyTheme = company.companyThemeConfig
+                val companyTheme = company.theme
                 url = getString(Constants.EXTRA_CONSTANTS.URL_BASE, "")
 
                 appbar.setBackgroundColor(Color.parseColor(companyTheme.bottomBarHex))

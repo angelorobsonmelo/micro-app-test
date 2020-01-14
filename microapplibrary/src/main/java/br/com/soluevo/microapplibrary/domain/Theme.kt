@@ -2,7 +2,7 @@ package br.com.soluevo.microapplibrary.domain
 
 import java.io.Serializable
 
-data class CompanyThemeConfig(
+data class Theme(
     val toolbarHex: String,
     val bottomBarHex: String
 ): Serializable

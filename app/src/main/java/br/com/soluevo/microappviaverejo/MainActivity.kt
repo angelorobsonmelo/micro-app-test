@@ -7,18 +7,18 @@ import br.com.soluevo.microapplibrary.NavigationHostActivity
 import br.com.soluevo.microapplibrary.application.commom.utils.Constants.CompanyThemeConstant.EXTRA_COMPANY
 import br.com.soluevo.microapplibrary.application.commom.utils.Constants.EXTRA_CONSTANTS.URL_BASE
 import br.com.soluevo.microapplibrary.domain.Company
-import br.com.soluevo.microapplibrary.domain.CompanyThemeConfig
+import br.com.soluevo.microapplibrary.domain.Theme
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val companyThemeConfig = CompanyThemeConfig("#CD5C5C", "#FFA07A")
+        val theme = Theme("#CD5C5C", "#FFA07A")
         val company = Company(
             1,
             "Company name",
             "https://static.netshoes.com.br/r0.0.390.13/netshoesbr/images/share.png",
-            companyThemeConfig
+            theme
         )
 
         val intent = Intent(this, NavigationHostActivity::class.java).apply {
