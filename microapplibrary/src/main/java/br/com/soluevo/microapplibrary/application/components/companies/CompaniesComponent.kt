@@ -7,7 +7,6 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.startActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -45,6 +44,7 @@ class CompaniesComponent(context: Context, var attrs: AttributeSet) : LinearLayo
 
     private lateinit var mAdapter: PartnersAdapter
 
+    private var mUrl: String? = ""
 
     init {
         init(context, attrs)
@@ -84,7 +84,7 @@ class CompaniesComponent(context: Context, var attrs: AttributeSet) : LinearLayo
             bundle.putSerializable(Constants.CompanyThemeConstant.EXTRA_COMPANY, company)
             bundle.putString(
                 Constants.EXTRA_CONSTANTS.URL_BASE,
-                "https://private-c04e04-viavarejo1.apiary-mock.com/"
+                mUrl
             )
             putExtras(bundle)
         }
@@ -93,7 +93,6 @@ class CompaniesComponent(context: Context, var attrs: AttributeSet) : LinearLayo
     }
 
     private fun setUpDagger() {
-        var url: String? = ""
         context.theme.obtainStyledAttributes(
             attrs,
             R.styleable.CompaniesComponent,
@@ -101,7 +100,7 @@ class CompaniesComponent(context: Context, var attrs: AttributeSet) : LinearLayo
         ).apply {
 
             try {
-                url = getString(R.styleable.CompaniesComponent_url)
+                mUrl = getString(R.styleable.CompaniesComponent_url)
 
             } finally {
                 recycle()
@@ -110,7 +109,7 @@ class CompaniesComponent(context: Context, var attrs: AttributeSet) : LinearLayo
 
         DaggerCustomViewWithSimpleRecyclerViewHorizontalComponent.builder()
             .contextModule(ContextModule(context))
-            .netWorkModule(NetWorkModule(url!!))
+            .netWorkModule(NetWorkModule(mUrl!!))
             .sympleRecyclerViewHorizontal(
                 SympleRecyclerViewHorizontal(
                     binding.partnersImagesRecyclerView,

@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+
     tools:context=".ComponentActivity">
 
     <br.com.soluevo.microapplibrary.application.components.companies.CompaniesComponent
+        android:background="@color/colorAccent"
         android:id="@+id/companiesComponent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:url="https://private-c04e04-viavarejo1.apiary-mock.com/"
         />
 
