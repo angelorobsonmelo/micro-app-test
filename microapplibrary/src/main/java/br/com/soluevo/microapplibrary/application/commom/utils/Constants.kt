@@ -3,7 +3,7 @@ package br.com.soluevo.microapplibrary.application.commom.utils
 object Constants {
 
     object CompanyThemeConstant {
-        const val EXTRA_COMPANY_THEME = "EXTRA_COMPANY_THEME"
+        const val EXTRA_COMPANY = "EXTRA_COMPANY_THEME"
     }
 
     object EXTRA_CONSTANTS {

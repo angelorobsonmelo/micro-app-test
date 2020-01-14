@@ -3,10 +3,10 @@ package br.com.soluevo.microapplibrary
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.content.ContextCompat
 import br.com.soluevo.microapplibrary.application.commom.utils.Constants
-import br.com.soluevo.microapplibrary.application.commom.utils.Constants.CompanyThemeConstant.EXTRA_COMPANY_THEME
+import br.com.soluevo.microapplibrary.application.commom.utils.Constants.CompanyThemeConstant.EXTRA_COMPANY
 import br.com.soluevo.microapplibrary.application.commom.utils.listeners.OnBackPressedListener
+import br.com.soluevo.microapplibrary.domain.Company
 import br.com.soluevo.microapplibrary.domain.CompanyThemeConfig
 import kotlinx.android.synthetic.main.host_navigation_activity.*
 
@@ -21,13 +21,13 @@ class NavigationHostActivity : AppCompatActivity() {
 
         intent.apply {
             extras?.apply {
-                val themeConfig = getSerializable(EXTRA_COMPANY_THEME) as CompanyThemeConfig
-                appbar.setBackgroundColor(Color.parseColor(themeConfig.bottomBarHex))
+                val company = getSerializable(EXTRA_COMPANY) as Company
+                val companyTheme = company.companyThemeConfig
                 url = getString(Constants.EXTRA_CONSTANTS.URL_BASE, "")
+
+                appbar.setBackgroundColor(Color.parseColor(companyTheme.bottomBarHex))
             }
-
         }
-
     }
 
     fun getUrl(): String = url
