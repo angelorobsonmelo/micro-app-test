@@ -13,6 +13,7 @@ class NavigationHostActivity : AppCompatActivity() {
 
     private var url = ""
     private var mOnBackPressedListener: OnBackPressedListener? = null
+    private var company: Company? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,11 +21,11 @@ class NavigationHostActivity : AppCompatActivity() {
 
         intent.apply {
             extras?.apply {
-                val company = getSerializable(EXTRA_COMPANY) as Company
-                val companyTheme = company.theme
+                company = getSerializable(EXTRA_COMPANY) as Company
+                val companyTheme = company?.theme
                 url = getString(Constants.EXTRA_CONSTANTS.URL_BASE, "")
 
-                appbar.setBackgroundColor(Color.parseColor(companyTheme.bottomBarHex))
+                appbar.setBackgroundColor(Color.parseColor(companyTheme?.bottomBarHex))
             }
         }
     }
@@ -46,4 +47,6 @@ class NavigationHostActivity : AppCompatActivity() {
 
         return false
     }
+
+    fun getCompany() = company
 }

@@ -2,11 +2,12 @@ package br.com.soluevo.microapplibrary.application.fragments.products.products
 
 
 import android.os.Bundle
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import br.com.angelorobson.horizontalrecyclerviewimageslibrary.ImageClickListener
+import br.com.angelorobson.horizontalrecyclerviewimageslibrary.model.ItemImage
 import br.com.soluevo.microapplibrary.NavigationHostActivity
 import br.com.soluevo.microapplibrary.R
 import br.com.soluevo.microapplibrary.application.commom.EventObserver
@@ -19,6 +20,7 @@ import br.com.soluevo.microapplibrary.application.commom.utils.listeners.OnBackP
 import br.com.soluevo.microapplibrary.application.fragments.products.products.adapter.ProductsAdapter
 import br.com.soluevo.microapplibrary.databinding.ProductsFragmentBinding
 import br.com.soluevo.microapplibrary.domain.Product
+import kotlinx.android.synthetic.main.products_fragment.*
 import javax.inject.Inject
 
 
@@ -41,6 +43,7 @@ class ProductsFragment : BindingFragment<ProductsFragmentBinding>() {
 
     private var mProducts = listOf<Product>()
     private val mAdapter = ProductsAdapter(mProducts)
+    private var mActivity: NavigationHostActivity? = null
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -49,6 +52,7 @@ class ProductsFragment : BindingFragment<ProductsFragmentBinding>() {
     }
 
     private fun setUpElements() {
+        mActivity = activity as NavigationHostActivity
         setUpDagger()
         setUpDataBinding()
         mViewModel.getProducts()
@@ -57,19 +61,18 @@ class ProductsFragment : BindingFragment<ProductsFragmentBinding>() {
     }
 
     private fun setUpDagger() {
-        val ac = activity as NavigationHostActivity
-        val url = ac.getUrl()
+        val url = mActivity?.getUrl()
 
-        ac.onBackPressedListener(object : OnBackPressedListener {
+        mActivity?.onBackPressedListener(object : OnBackPressedListener {
             override fun onBackPressedClicked() {
-                ac.finishActivity()
+                mActivity?.finishActivity()
             }
 
         })
 
         DaggerFragmentGenericWithRecyclerViewComponent.builder()
             .contextModule(ContextModule(requireContext()))
-            .netWorkModule(NetWorkModule(url))
+            .netWorkModule(NetWorkModule(url!!))
             .recyclerViewAnimatedWithDividerModule(
                 RecyclerViewAnimatedWithDividerModule(
                     binding.recyclerView,
@@ -80,6 +83,7 @@ class ProductsFragment : BindingFragment<ProductsFragmentBinding>() {
             .inject(this)
     }
 
+
     private fun setUpDataBinding() {
         binding.lifecycleOwner = this
     }
@@ -87,7 +91,29 @@ class ProductsFragment : BindingFragment<ProductsFragmentBinding>() {
     private fun initObservables() {
         mViewModel.successObserver.observe(viewLifecycleOwner, EventObserver {
             mAdapter.updateData(it)
+            setUpCompanyFilters()
         })
+    }
+
+    private fun setUpCompanyFilters() {
+        val company = mActivity?.getCompany()
+
+        val filters = company?.companyFilters?.map { filter ->
+            ItemImage(filter.id, filter.name, filter.imageUrl)
+        }
+
+        filters?.apply {
+            horizontalRecyclerViewImages.setImages(this, object : ImageClickListener {
+                override fun onclick(image: ItemImage, position: Int) {
+
+                }
+
+                override fun onLongClick(image: ItemImage, position: Int) {
+
+                }
+
+            })
+        }
     }
 
     override fun onDestroy() {
