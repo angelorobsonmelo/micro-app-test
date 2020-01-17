@@ -10,4 +10,5 @@ import javax.inject.Singleton
 @Component(modules = [GenericModule::class])
 interface FragmentComponentGeneric {
 
+    fun inject(productsFragment: ProductsFragment)
 }

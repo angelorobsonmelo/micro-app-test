@@ -3,34 +3,55 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ProductsFragment">
+        android:fillViewport="true">
 
-        <br.com.angelorobson.horizontalrecyclerviewimageslibrary.HorizontalRecyclerViewImages
-            android:id="@+id/horizontalRecyclerViewImages"
+
+        <LinearLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="vertical"
+            tools:context=".ProductsFragment">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/horizontalRecyclerViewImages"
-            tools:itemCount="4"
-            tools:listitem="@layout/product_item" />
+            <br.com.angelorobson.horizontalrecyclerviewimageslibrary.HorizontalRecyclerViewImages
+                android:id="@+id/horizontalRecyclerViewImages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.example.moeidbannerlibrary.banner.BannerLayout
+                android:id="@+id/Banner"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                app:autoPlaying="true"
+                app:centerScale="1.6"
+                app:itemSpace="5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/horizontalRecyclerViewImages"
+                app:moveSpeed="0.5"
+                app:showIndicator="true" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="PRODUTOS MAIS PROCURADOS"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Banner" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </layout>

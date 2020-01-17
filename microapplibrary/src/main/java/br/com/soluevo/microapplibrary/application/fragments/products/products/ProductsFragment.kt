@@ -4,22 +4,20 @@ package br.com.soluevo.microapplibrary.application.fragments.products.products
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import br.com.angelorobson.horizontalrecyclerviewimageslibrary.ImageClickListener
 import br.com.angelorobson.horizontalrecyclerviewimageslibrary.model.ItemImage
 import br.com.soluevo.microapplibrary.NavigationHostActivity
 import br.com.soluevo.microapplibrary.R
 import br.com.soluevo.microapplibrary.application.commom.EventObserver
-import br.com.soluevo.microapplibrary.application.commom.di.components.fragments.DaggerFragmentGenericWithRecyclerViewComponent
+import br.com.soluevo.microapplibrary.application.commom.di.components.fragments.DaggerFragmentComponentGeneric
 import br.com.soluevo.microapplibrary.application.commom.di.modules.application.ContextModule
 import br.com.soluevo.microapplibrary.application.commom.di.modules.network.NetWorkModule
-import br.com.soluevo.microapplibrary.application.commom.di.modules.recyclerview.RecyclerViewAnimatedWithDividerModule
 import br.com.soluevo.microapplibrary.application.commom.utils.BindingFragment
 import br.com.soluevo.microapplibrary.application.commom.utils.listeners.OnBackPressedListener
 import br.com.soluevo.microapplibrary.application.fragments.products.products.adapter.ProductsAdapter
 import br.com.soluevo.microapplibrary.databinding.ProductsFragmentBinding
 import br.com.soluevo.microapplibrary.domain.Product
+import com.example.moeidbannerlibrary.banner.BaseBannerAdapter
 import kotlinx.android.synthetic.main.products_fragment.*
 import javax.inject.Inject
 
@@ -35,18 +33,29 @@ class ProductsFragment : BindingFragment<ProductsFragmentBinding>() {
         ViewModelProviders.of(this, mFactory)[ProductsViewModel::class.java]
     }
 
-    @Inject
-    lateinit var mLayoutManager: LinearLayoutManager
-
-    @Inject
-    lateinit var mRecyclerView: RecyclerView
-
     private var mProducts = listOf<Product>()
     private val mAdapter = ProductsAdapter(mProducts)
     private var mActivity: NavigationHostActivity? = null
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        val ddd = Banner
+
+
+        val urls: MutableList<String> = ArrayList()
+        urls.add("http://img0.imgtn.bdimg.com/it/u=1352823040,1166166164&fm=27&gp=0.jpg")
+        urls.add("http://img3.imgtn.bdimg.com/it/u=2293177440,3125900197&fm=27&gp=0.jpg")
+        urls.add("http://img3.imgtn.bdimg.com/it/u=3967183915,4078698000&fm=27&gp=0.jpg")
+        urls.add("http://img0.imgtn.bdimg.com/it/u=3184221534,2238244948&fm=27&gp=0.jpg")
+        urls.add("http://img4.imgtn.bdimg.com/it/u=1794621527,1964098559&fm=27&gp=0.jpg")
+        urls.add("http://img4.imgtn.bdimg.com/it/u=1243617734,335916716&fm=27&gp=0.jpg")
+
+        val webBannerAdapter = BaseBannerAdapter(requireContext(), urls)
+        webBannerAdapter.setOnBannerItemClickListener {
+
+        }
+        ddd.setAdapter(webBannerAdapter)
 
         setUpElements()
     }
@@ -70,17 +79,13 @@ class ProductsFragment : BindingFragment<ProductsFragmentBinding>() {
 
         })
 
-        DaggerFragmentGenericWithRecyclerViewComponent.builder()
+        DaggerFragmentComponentGeneric.builder()
             .contextModule(ContextModule(requireContext()))
             .netWorkModule(NetWorkModule(url!!))
-            .recyclerViewAnimatedWithDividerModule(
-                RecyclerViewAnimatedWithDividerModule(
-                    binding.recyclerView,
-                    mAdapter as RecyclerView.Adapter<RecyclerView.ViewHolder>
-                )
-            )
             .build()
             .inject(this)
+
+
     }
 
 
