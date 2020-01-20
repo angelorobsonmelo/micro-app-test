@@ -50,10 +50,16 @@
                 android:textSize="15sp"
                 android:textColor="@color/white"
                 android:background="@color/dark_red"
-                android:text="PRODUTOS MAIS PROCURADOS"
+                android:text="@string/product_most_wanted"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Banner" />
+
+            <br.com.soluevo.microapplibrary.application.components.product.ProductComponent
+                android:id="@+id/mostWantedProduct"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
 
         </LinearLayout>

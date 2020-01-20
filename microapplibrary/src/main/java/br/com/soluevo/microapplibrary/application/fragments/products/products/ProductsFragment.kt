@@ -14,6 +14,7 @@ import br.com.soluevo.microapplibrary.application.commom.di.modules.application.
 import br.com.soluevo.microapplibrary.application.commom.di.modules.network.NetWorkModule
 import br.com.soluevo.microapplibrary.application.commom.utils.BindingFragment
 import br.com.soluevo.microapplibrary.application.commom.utils.listeners.OnBackPressedListener
+import br.com.soluevo.microapplibrary.application.components.product.ProductComponentClickListener
 import br.com.soluevo.microapplibrary.application.fragments.products.products.adapter.ProductsAdapter
 import br.com.soluevo.microapplibrary.databinding.ProductsFragmentBinding
 import br.com.soluevo.microapplibrary.domain.Product
@@ -40,23 +41,6 @@ class ProductsFragment : BindingFragment<ProductsFragmentBinding>() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val ddd = Banner
-
-
-        val urls: MutableList<String> = ArrayList()
-        urls.add("http://img0.imgtn.bdimg.com/it/u=1352823040,1166166164&fm=27&gp=0.jpg")
-        urls.add("http://img3.imgtn.bdimg.com/it/u=2293177440,3125900197&fm=27&gp=0.jpg")
-        urls.add("http://img3.imgtn.bdimg.com/it/u=3967183915,4078698000&fm=27&gp=0.jpg")
-        urls.add("http://img0.imgtn.bdimg.com/it/u=3184221534,2238244948&fm=27&gp=0.jpg")
-        urls.add("http://img4.imgtn.bdimg.com/it/u=1794621527,1964098559&fm=27&gp=0.jpg")
-        urls.add("http://img4.imgtn.bdimg.com/it/u=1243617734,335916716&fm=27&gp=0.jpg")
-
-        val webBannerAdapter = BaseBannerAdapter(requireContext(), urls)
-        webBannerAdapter.setOnBannerItemClickListener {
-
-        }
-        ddd.setAdapter(webBannerAdapter)
-
         setUpElements()
     }
 
@@ -67,6 +51,7 @@ class ProductsFragment : BindingFragment<ProductsFragmentBinding>() {
         mViewModel.getProducts()
         initObservables()
         showToolbarWithDisplayArrowBack("Voltar")
+        setUpBanner()
     }
 
     private fun setUpDagger() {
@@ -84,19 +69,36 @@ class ProductsFragment : BindingFragment<ProductsFragmentBinding>() {
             .netWorkModule(NetWorkModule(url!!))
             .build()
             .inject(this)
-
-
     }
-
 
     private fun setUpDataBinding() {
         binding.lifecycleOwner = this
+    }
+
+
+    private fun setUpBanner() {
+        val banner = Banner
+
+        val urls: MutableList<String> = ArrayList()
+        urls.add("http://img0.imgtn.bdimg.com/it/u=1352823040,1166166164&fm=27&gp=0.jpg")
+        urls.add("http://img3.imgtn.bdimg.com/it/u=2293177440,3125900197&fm=27&gp=0.jpg")
+        urls.add("http://img3.imgtn.bdimg.com/it/u=3967183915,4078698000&fm=27&gp=0.jpg")
+        urls.add("http://img0.imgtn.bdimg.com/it/u=3184221534,2238244948&fm=27&gp=0.jpg")
+        urls.add("http://img4.imgtn.bdimg.com/it/u=1794621527,1964098559&fm=27&gp=0.jpg")
+        urls.add("http://img4.imgtn.bdimg.com/it/u=1243617734,335916716&fm=27&gp=0.jpg")
+
+        val webBannerAdapter = BaseBannerAdapter(requireContext(), urls)
+        webBannerAdapter.setOnBannerItemClickListener {
+
+        }
+        banner.setAdapter(webBannerAdapter)
     }
 
     private fun initObservables() {
         mViewModel.successObserver.observe(viewLifecycleOwner, EventObserver {
             mAdapter.updateData(it)
             setUpCompanyFilters()
+            setUpMostWantedProduct(it)
         })
     }
 
@@ -119,6 +121,21 @@ class ProductsFragment : BindingFragment<ProductsFragmentBinding>() {
 
             })
         }
+    }
+
+    private fun setUpMostWantedProduct(products: List<Product>) {
+        val productComponent = mostWantedProduct
+
+        productComponent.setProducts(products, object : ProductComponentClickListener {
+            override fun onclick(product: Product, position: Int) {
+
+            }
+
+            override fun onLongClick(product: Product, position: Int) {
+
+            }
+
+        })
     }
 
     override fun onDestroy() {
