@@ -3,22 +3,17 @@ package br.com.soluevo.microapplibrary.application.fragments.products.products
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import br.com.soluevo.microapplibrary.R
-import br.com.soluevo.utils.RecyclerViewMatcher.Companion.withRecyclerView
+import br.com.soluevo.microapplibrary.application.fragments.home.HomeFragment
 import br.com.soluevo.utils.SetupMockServerManager
 import br.com.soluevo.utils.TestUtils.waitEspresso
-import org.hamcrest.CoreMatchers
 import org.junit.Before
-import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mockito
 
 @RunWith(AndroidJUnit4::class)
-class ProductsFragmentTest {
+class HomeFragmentTest {
 
     abstract class Describe_Products_Network : SetupMockServerManager() {
 
@@ -27,7 +22,7 @@ class ProductsFragmentTest {
         @Before
         fun init() {
             val scenario =
-                launchFragmentInContainer<ProductsFragment>(themeResId = R.style.AppTheme)
+                launchFragmentInContainer<HomeFragment>(themeResId = R.style.AppTheme)
 
             scenario.onFragment {
                 Navigation.setViewNavController(it.requireView(), mockNavController)
@@ -45,7 +40,7 @@ class ProductsFragmentTest {
             waitEspresso(5000)
         }
 
-        @Test
+     /*   @Test
         fun testTitleIsDisplayed() {
             onView(
                 CoreMatchers.allOf(
@@ -57,9 +52,9 @@ class ProductsFragmentTest {
                     )
                 )
             ).check(matches(isDisplayed()))
-        }
+        }*/
 
-        @Test
+     /*   @Test
         fun testDescriptionIsDisplayed() {
             onView(
                 CoreMatchers.allOf(
@@ -71,7 +66,7 @@ class ProductsFragmentTest {
                     )
                 )
             ).check(matches(isDisplayed()))
-        }
+        }*/
 
     }
 

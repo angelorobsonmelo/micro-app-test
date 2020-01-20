@@ -2,7 +2,7 @@ package br.com.soluevo.microapplibrary.application.commom.di.components.fragment
 
 import br.com.soluevo.microapplibrary.application.commom.di.modules.generic.GenericModule
 import br.com.soluevo.microapplibrary.application.commom.di.modules.recyclerview.RecyclerViewAnimatedWithDividerModule
-import br.com.soluevo.microapplibrary.application.fragments.products.products.ProductsFragment
+import br.com.soluevo.microapplibrary.application.fragments.home.HomeFragment
 import dagger.Component
 import javax.inject.Singleton
 
@@ -11,6 +11,6 @@ import javax.inject.Singleton
 @Component(modules = [GenericModule::class, RecyclerViewAnimatedWithDividerModule::class])
 interface FragmentGenericWithRecyclerViewComponent {
 
-    fun inject(fragment: ProductsFragment)
+    fun inject(fragment: HomeFragment)
 
 }

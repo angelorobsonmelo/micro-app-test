@@ -2,7 +2,7 @@ package br.com.soluevo.microapplibrary.application.fragments.products
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import br.com.soluevo.microapplibrary.application.builders.ProductBuilder
-import br.com.soluevo.microapplibrary.application.fragments.products.products.ProductsViewModel
+import br.com.soluevo.microapplibrary.application.fragments.home.ProductsViewModel
 import br.com.soluevo.microapplibrary.domain.Product
 import br.com.soluevo.microapplibrary.service.remote.products.ProductApiDataSource
 import br.com.soluevo.utils.SetupRemoteUtils

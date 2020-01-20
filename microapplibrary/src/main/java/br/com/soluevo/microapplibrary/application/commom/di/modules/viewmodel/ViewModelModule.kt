@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import br.com.soluevo.microapplibrary.application.commom.di.utils.ViewModelFactory
 import br.com.soluevo.microapplibrary.application.commom.di.utils.ViewModelKey
 import br.com.soluevo.microapplibrary.application.components.companies.CompaniesViewModel
-import br.com.soluevo.microapplibrary.application.fragments.products.products.ProductsViewModel
+import br.com.soluevo.microapplibrary.application.fragments.home.ProductsViewModel
 
 import dagger.Binds
 import dagger.Module

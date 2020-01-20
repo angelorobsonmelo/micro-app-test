@@ -1,4 +1,4 @@
-package br.com.soluevo.microapplibrary.application.fragments.products.products
+package br.com.soluevo.microapplibrary.application.fragments.home
 
 
 import android.os.Bundle
@@ -15,17 +15,16 @@ import br.com.soluevo.microapplibrary.application.commom.di.modules.network.NetW
 import br.com.soluevo.microapplibrary.application.commom.utils.BindingFragment
 import br.com.soluevo.microapplibrary.application.commom.utils.listeners.OnBackPressedListener
 import br.com.soluevo.microapplibrary.application.components.product.ProductComponentClickListener
-import br.com.soluevo.microapplibrary.application.fragments.products.products.adapter.ProductsAdapter
-import br.com.soluevo.microapplibrary.databinding.ProductsFragmentBinding
+import br.com.soluevo.microapplibrary.databinding.HomeFragmentBinding
 import br.com.soluevo.microapplibrary.domain.Product
 import com.example.moeidbannerlibrary.banner.BaseBannerAdapter
-import kotlinx.android.synthetic.main.products_fragment.*
+import kotlinx.android.synthetic.main.home_fragment.*
 import javax.inject.Inject
 
 
-class ProductsFragment : BindingFragment<ProductsFragmentBinding>() {
+class HomeFragment : BindingFragment<HomeFragmentBinding>() {
 
-    override fun getLayoutResId(): Int = R.layout.products_fragment
+    override fun getLayoutResId(): Int = R.layout.home_fragment
 
     @Inject
     lateinit var mFactory: ViewModelProvider.Factory
@@ -35,7 +34,6 @@ class ProductsFragment : BindingFragment<ProductsFragmentBinding>() {
     }
 
     private var mProducts = listOf<Product>()
-    private val mAdapter = ProductsAdapter(mProducts)
     private var mActivity: NavigationHostActivity? = null
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -50,7 +48,7 @@ class ProductsFragment : BindingFragment<ProductsFragmentBinding>() {
         setUpDataBinding()
         mViewModel.getProducts()
         initObservables()
-        showToolbarWithDisplayArrowBack("Voltar")
+        showToolbarWithDisplayArrowBack("")
         setUpBanner()
     }
 
@@ -96,7 +94,6 @@ class ProductsFragment : BindingFragment<ProductsFragmentBinding>() {
 
     private fun initObservables() {
         mViewModel.successObserver.observe(viewLifecycleOwner, EventObserver {
-            mAdapter.updateData(it)
             setUpCompanyFilters()
             setUpMostWantedProduct(it)
         })

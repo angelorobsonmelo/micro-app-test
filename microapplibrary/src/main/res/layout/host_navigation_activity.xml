@@ -37,7 +37,7 @@
             android:layout_marginBottom="?attr/actionBarSize"
             app:defaultNavHost="true"
             app:navGraph="@navigation/navigation_graph"
-            tools:layout="@layout/products_fragment" />
+            tools:layout="@layout/home_fragment" />
 
     </FrameLayout>
 

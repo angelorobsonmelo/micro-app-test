@@ -27,11 +27,11 @@ class ProductComponentAdapter(
         val product = itemProducts[position]
         holder.bindItem(product)
 
-        holder.itemView.linearLayout.setOnClickListener {
+        holder.itemView.openButton.setOnClickListener {
             listener?.onclick(product, position)
         }
 
-        holder.itemView.linearLayout.setOnLongClickListener {
+        holder.itemView.openButton.setOnLongClickListener {
             listener?.onLongClick(product, position)
             true
         }
