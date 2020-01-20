@@ -3,6 +3,8 @@ package br.com.soluevo.microapplibrary
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.Navigation
+import androidx.navigation.ui.setupWithNavController
 import br.com.soluevo.microapplibrary.application.commom.utils.Constants
 import br.com.soluevo.microapplibrary.application.commom.utils.Constants.CompanyThemeConstant.EXTRA_COMPANY
 import br.com.soluevo.microapplibrary.application.commom.utils.listeners.OnBackPressedListener
@@ -28,6 +30,11 @@ class NavigationHostActivity : AppCompatActivity() {
                 appbar.setBackgroundColor(Color.parseColor(companyTheme?.bottomBarHex))
             }
         }
+
+
+        val navController = Navigation.findNavController(this, R.id.my_nav_fragment)
+        bottomNavigation?.setupWithNavController(navController)
+        bottomNavigation?.setBackgroundColor(Color.parseColor("#FFFFFF"))
     }
 
     fun getUrl(): String = url

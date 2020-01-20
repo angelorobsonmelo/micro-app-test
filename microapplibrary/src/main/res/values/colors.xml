@@ -6,4 +6,7 @@
     <color name="white">#FFFFFF</color>
     <color name="dark_red">#DA1A2D</color>
     <color name="green">#5ccd00</color>
+    <color name="black">#000000</color>
+    <color name="blue">#103485</color>
+    <color name="light_gray">#cfcdcd</color>
 </resources>

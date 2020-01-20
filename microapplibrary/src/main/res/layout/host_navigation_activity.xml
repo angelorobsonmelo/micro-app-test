@@ -34,10 +34,32 @@
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="?attr/actionBarSize"
             app:defaultNavHost="true"
             app:navGraph="@navigation/navigation_graph"
             tools:layout="@layout/products_fragment" />
 
     </FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:labelVisibilityMode="labeled"
+        app:itemIconTint="@color/nav_items_colors"
+        app:itemTextColor="@color/nav_items_colors"
+        app:menu="@menu/bottom_navigation_menu" />
+
+    <!-- <com.google.android.material.bottomnavigation.BottomNavigationView
+         android:id="@+id/bottomNavigation"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_gravity="bottom"
+         app:itemIconTint="@color/nav_items_colors"
+         app:itemTextColor="@color/nav_items_colors"
+         app:labelVisibilityMode="labeled"
+         app:menu="@menu/bottom_navigation_menu" />-->
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
