@@ -48,8 +48,11 @@ class HomeFragment : BindingFragment<HomeFragmentBinding>() {
         setUpDataBinding()
         mViewModel.getProducts()
         initObservables()
-        showToolbarWithDisplayArrowBack("")
         setUpBanner()
+
+        mActivity?.getCompany()?.imageUrl?.apply {
+            showToolbarWithDisplayArrowBackAndLogo(this)
+        }
     }
 
     private fun setUpDagger() {

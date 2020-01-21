@@ -19,7 +19,21 @@
             android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar" />
+            app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar" >
+
+
+            <ImageView
+                android:id="@+id/logo_image"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/ic_home_black"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:scaleType="centerInside" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+
 
     </com.google.android.material.appbar.AppBarLayout>
 

@@ -1,15 +1,23 @@
 package br.com.soluevo.microapplibrary.application.commom.utils
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.squareup.picasso.Picasso
+import com.squareup.picasso.Target
 import kotlinx.android.synthetic.main.host_navigation_activity.*
+import java.lang.Exception
 
 
 open class FragmentBase : Fragment() {
 
 
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    //    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 //        super.onViewCreated(view, savedInstanceState)
 ////        setUpBehavorBottomNavigation()
 //    }
@@ -73,82 +81,47 @@ open class FragmentBase : Fragment() {
         appCompatActivity?.supportActionBar?.setDisplayShowTitleEnabled(true)
         appCompatActivity?.supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
-//
-//    fun showToolbarWithoutDisplayArrowBack(title: String) {
-//        val toolbar = activity?.toolbar
-//        toolbar?.visibility = View.VISIBLE
-//        toolbar?.title = title
-//
-//        val appCompatActivity = activity as AppCompatActivity?
-//
-//        appCompatActivity?.setSupportActionBar(toolbar)
-//        appCompatActivity?.supportActionBar?.setDisplayShowTitleEnabled(true)
-//        appCompatActivity?.supportActionBar?.setDisplayHomeAsUpEnabled(false)
-//    }
-//
-//    fun showToast(msg: String) {
-//        Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
-//    }
-//
-//    fun setUpGoogleAuth(googleAuthHandler: GoogleAuthHandler) {
-//        this.googleAuthHandler = googleAuthHandler
-//
-//        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//            .requestIdToken(this.getString(R.string.default_web_client_id))
-//            .requestEmail()
-//            .requestScopes(
-//                Scope("profile")
-//            )
-//            .build()
-//
-//        mGoogleSignInClient = GoogleSignIn.getClient(context!!, gso)
-//    }
-//
-//    fun openSignIntent() {
-//        val signInIntent = mGoogleSignInClient?.signInIntent
-//        startActivityForResult(signInIntent, SignInActivity.GOOGLE_AUTH_REQUEST_CODE)
-//    }
-//
-//    fun signOutGoogle() {
-//        mGoogleSignInClient?.signOut()
-//    }
-//
-//    fun signOutFireBase() {
-//        auth.signOut()
-//    }
-//
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//
-//        if (requestCode == SignInActivity.GOOGLE_AUTH_REQUEST_CODE) {
-//            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-//            try {
-//                val account = task.getResult(ApiException::class.java)
-//                account?.let {
-//                    firebaseAuthWithGoogle(it)
-//                }
-//
-//            } catch (e: ApiException) {
-//                googleAuthHandler?.onApiException(e)
-//                Log.w(ContentValues.TAG, "Google sign in failed", e)
-//            }
-//        }
-//    }
-//
-//
-//    private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
-//        val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
-//
-//        auth.signInWithCredential(credential).addOnCompleteListener {
-//            if (it.isSuccessful) {
-//                googleAuthHandler?.onSuccess(acct)
-//                return@addOnCompleteListener
-//            }
-//
-//            googleAuthHandler?.onException(it.exception)
-//            Log.w(ContentValues.TAG, "signInWithCredential:failure", it.exception)
-//        }
-//    }
+
+    fun showToolbarWithDisplayArrowBackAndLogo(logo: String) {
+        val toolbar = activity?.toolbar
+
+        val appCompatActivity = activity as AppCompatActivity?
+
+        appCompatActivity?.setSupportActionBar(toolbar)
+        appCompatActivity?.supportActionBar?.setDisplayShowTitleEnabled(false)
+        appCompatActivity?.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        appCompatActivity?.supportActionBar?.setDisplayUseLogoEnabled(true)
+
+
+//        setImageInToolbarBar(logo, appCompatActivity)
+    }
+
+    private fun setImageInToolbarBar(
+        logo: String,
+        appCompatActivity: AppCompatActivity?
+    ) {
+        Picasso.get()
+            .load(logo)
+            .resize(100, 50)
+            .into(object : Target {
+                override fun onPrepareLoad(placeHolderDrawable: Drawable?) {
+
+                }
+
+                override fun onBitmapFailed(e: Exception?, errorDrawable: Drawable?) {
+
+                }
+
+                override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
+                    activity?.baseContext?.apply {
+                        val drawImage = BitmapDrawable(this.resources, bitmap)
+                        appCompatActivity?.supportActionBar?.setLogo(drawImage)
+                    }
+
+                }
+
+            })
+    }
 
 
 }

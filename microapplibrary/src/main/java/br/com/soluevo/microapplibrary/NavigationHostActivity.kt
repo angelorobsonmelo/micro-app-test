@@ -1,15 +1,22 @@
 package br.com.soluevo.microapplibrary
 
+import android.graphics.Bitmap
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import br.com.soluevo.microapplibrary.application.commom.utils.Constants
 import br.com.soluevo.microapplibrary.application.commom.utils.Constants.CompanyThemeConstant.EXTRA_COMPANY
 import br.com.soluevo.microapplibrary.application.commom.utils.listeners.OnBackPressedListener
 import br.com.soluevo.microapplibrary.domain.Company
+import com.squareup.picasso.Picasso
+import com.squareup.picasso.Target
 import kotlinx.android.synthetic.main.host_navigation_activity.*
+import java.lang.Exception
 
 class NavigationHostActivity : AppCompatActivity() {
 
@@ -31,6 +38,23 @@ class NavigationHostActivity : AppCompatActivity() {
             }
         }
 
+        Picasso.get()
+            .load(company?.imageUrl)
+            .into(object : Target {
+                override fun onPrepareLoad(placeHolderDrawable: Drawable?) {
+
+                }
+
+                override fun onBitmapFailed(e: Exception?, errorDrawable: Drawable?) {
+
+                }
+
+                override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
+                    logo_image.setImageBitmap(bitmap)
+                    logo_image.scaleType = ImageView.ScaleType.CENTER_CROP
+                }
+
+            })
 
         val navController = Navigation.findNavController(this, R.id.my_nav_fragment)
         bottomNavigation?.setupWithNavController(navController)
