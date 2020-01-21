@@ -2,10 +2,9 @@ package br.com.soluevo.microapplibrary
 
 import android.graphics.Bitmap
 import android.graphics.Color
-import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.widget.ImageView
+import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
@@ -16,7 +15,6 @@ import br.com.soluevo.microapplibrary.domain.Company
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
 import kotlinx.android.synthetic.main.host_navigation_activity.*
-import java.lang.Exception
 
 class NavigationHostActivity : AppCompatActivity() {
 
@@ -87,4 +85,12 @@ class NavigationHostActivity : AppCompatActivity() {
     }
 
     fun getCompany() = company
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_search, menu)
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
+
 }
