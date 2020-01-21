@@ -38,6 +38,11 @@ class NavigationHostActivity : AppCompatActivity() {
             }
         }
 
+        setUpImageLogo()
+        setUpBottomNavigation()
+    }
+
+    private fun setUpImageLogo() {
         Picasso.get()
             .load(company?.imageUrl)
             .into(object : Target {
@@ -50,12 +55,14 @@ class NavigationHostActivity : AppCompatActivity() {
                 }
 
                 override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
-                    logo_image.setImageBitmap(bitmap)
-                    logo_image.scaleType = ImageView.ScaleType.CENTER_CROP
+                    val logo = logo_image
+                    logo.setImageBitmap(bitmap)
                 }
 
             })
+    }
 
+    private fun setUpBottomNavigation() {
         val navController = Navigation.findNavController(this, R.id.my_nav_fragment)
         bottomNavigation?.setupWithNavController(navController)
         bottomNavigation?.setBackgroundColor(Color.parseColor("#FFFFFF"))
