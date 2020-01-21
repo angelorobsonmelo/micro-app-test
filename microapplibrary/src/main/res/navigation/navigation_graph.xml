@@ -30,7 +30,7 @@
         tools:layout="@layout/home_fragment" />
     <fragment
         android:id="@+id/productFragment"
-        android:name="br.com.soluevo.microapplibrary.ProductFragment"
+        android:name="br.com.soluevo.microapplibrary.application.fragments.products.products.ProductFragment"
         android:label="fragment_product"
-        tools:layout="@layout/fragment_product" />
+        tools:layout="@layout/product_fragment" />
 </navigation>

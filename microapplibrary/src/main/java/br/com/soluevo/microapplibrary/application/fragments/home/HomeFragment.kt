@@ -15,6 +15,7 @@ import br.com.soluevo.microapplibrary.application.commom.di.modules.network.NetW
 import br.com.soluevo.microapplibrary.application.commom.utils.BindingFragment
 import br.com.soluevo.microapplibrary.application.commom.utils.listeners.OnBackPressedListener
 import br.com.soluevo.microapplibrary.application.components.product.ProductComponentClickListener
+import br.com.soluevo.microapplibrary.application.fragments.products.products.ProductsViewModel
 import br.com.soluevo.microapplibrary.databinding.HomeFragmentBinding
 import br.com.soluevo.microapplibrary.domain.Product
 import com.example.moeidbannerlibrary.banner.BaseBannerAdapter

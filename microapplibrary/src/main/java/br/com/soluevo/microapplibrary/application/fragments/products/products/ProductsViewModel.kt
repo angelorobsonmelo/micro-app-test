@@ -1,4 +1,4 @@
-package br.com.soluevo.microapplibrary.application.fragments.home
+package br.com.soluevo.microapplibrary.application.fragments.products.products
 
 import br.com.soluevo.microapplibrary.application.commom.EventLiveData
 import br.com.soluevo.microapplibrary.application.commom.utils.BaseViewModel

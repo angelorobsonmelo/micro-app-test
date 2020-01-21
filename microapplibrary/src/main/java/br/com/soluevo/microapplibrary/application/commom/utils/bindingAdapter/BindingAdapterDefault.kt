@@ -12,6 +12,7 @@ import br.com.soluevo.microapplibrary.application.commom.utils.extensions.format
 import br.com.soluevo.microapplibrary.application.commom.utils.extensions.formatToViewDateTimeDefaults
 
 import com.squareup.picasso.Picasso
+import java.text.NumberFormat
 import java.util.*
 
 
@@ -46,6 +47,12 @@ fun loadImage(view: ImageView, imageUrl: String?) {
     Picasso.get()
         .load(imageUrl)
         .into(view)
+}
+
+@BindingAdapter("imageUrl")
+fun currency(textView: TextView, value: Double) {
+    textView.text = NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
+        .format(value)
 }
 
 @BindingAdapter("loadImageFromPath")

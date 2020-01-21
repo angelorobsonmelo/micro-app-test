@@ -140,6 +140,9 @@ dependencies {
     // Horizontal recycler view images
     implementation 'com.github.angelorobsonmelo:HorizontalRecyclerViewImages:1.2'
 
+    implementation 'me.zhanghai.android.materialratingbar:library:1.4.0'
+
+
     // Mockito framework
     testImplementation 'org.mockito:mockito-core:2.28.2'
     testImplementation "org.mockito:mockito-inline:2.16.0"
