@@ -28,4 +28,9 @@
         android:name="br.com.soluevo.microapplibrary.application.fragments.home.HomeFragment"
         android:label="home_fragment"
         tools:layout="@layout/home_fragment" />
+    <fragment
+        android:id="@+id/productFragment"
+        android:name="br.com.soluevo.microapplibrary.ProductFragment"
+        android:label="fragment_product"
+        tools:layout="@layout/fragment_product" />
 </navigation>
