@@ -33,7 +33,15 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/productsListRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            tools:itemCount="2"
+            tools:listitem="@layout/product_item" />
+
+        <GridView
+            android:id="@+id/productGridView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="2" />
 
     </LinearLayout>
 </layout>
