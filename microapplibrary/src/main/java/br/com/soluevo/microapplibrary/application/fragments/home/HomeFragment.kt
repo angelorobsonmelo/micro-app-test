@@ -2,6 +2,8 @@ package br.com.soluevo.microapplibrary.application.fragments.home
 
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import br.com.angelorobson.horizontalrecyclerviewimageslibrary.ImageClickListener
@@ -39,7 +41,7 @@ class HomeFragment : BindingFragment<HomeFragmentBinding>() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
+        setHasOptionsMenu(true)
         setUpElements()
     }
 
@@ -137,6 +139,11 @@ class HomeFragment : BindingFragment<HomeFragmentBinding>() {
             }
 
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_search, menu)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onDestroy() {

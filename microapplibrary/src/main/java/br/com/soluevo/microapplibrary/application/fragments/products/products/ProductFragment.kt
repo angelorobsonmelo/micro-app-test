@@ -2,6 +2,10 @@ package br.com.soluevo.microapplibrary.application.fragments.products.products
 
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,6 +21,7 @@ import br.com.soluevo.microapplibrary.application.commom.utils.BindingFragment
 import br.com.soluevo.microapplibrary.application.fragments.products.products.adapter.ProductsAdapter
 import br.com.soluevo.microapplibrary.databinding.ProductFragmentBinding
 import br.com.soluevo.microapplibrary.domain.Product
+import kotlinx.android.synthetic.main.product_fragment.*
 import javax.inject.Inject
 
 
@@ -43,6 +48,7 @@ class ProductFragment : BindingFragment<ProductFragmentBinding>() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        setHasOptionsMenu(true)
         setUpElements()
     }
 
@@ -51,6 +57,31 @@ class ProductFragment : BindingFragment<ProductFragmentBinding>() {
         setUpDataBinding()
         initObservables()
         mViewModel.getProducts()
+
+        initStateButtonList()
+        initButtonsListClickListener()
+    }
+
+    private fun initStateButtonList() {
+        listProductButton.setBackgroundColor(
+            ContextCompat.getColor(
+                requireContext(),
+                R.color.dark_red
+            )
+        )
+    }
+
+    fun initButtonsListClickListener() {
+        listProductButton.setOnClickListener {
+            productsListRecyclerView.visibility = View.VISIBLE
+            productGridView.visibility = View.GONE
+        }
+
+        listProductGridButton.setOnClickListener {
+            productsListRecyclerView.visibility = View.GONE
+            productGridView.visibility = View.VISIBLE
+        }
+
     }
 
     private fun setUpDagger() {
@@ -78,6 +109,11 @@ class ProductFragment : BindingFragment<ProductFragmentBinding>() {
         mViewModel.successObserver.observe(viewLifecycleOwner, EventObserver {
             mAdapter.updateData(it)
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_filter, menu)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onDestroy() {

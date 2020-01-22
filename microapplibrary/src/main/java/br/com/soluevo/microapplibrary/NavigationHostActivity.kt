@@ -86,11 +86,4 @@ class NavigationHostActivity : AppCompatActivity() {
 
     fun getCompany() = company
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_search, menu)
-
-        return super.onCreateOptionsMenu(menu)
-    }
-
-
 }
