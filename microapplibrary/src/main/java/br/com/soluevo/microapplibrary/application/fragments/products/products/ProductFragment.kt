@@ -18,6 +18,7 @@ import br.com.soluevo.microapplibrary.application.commom.di.modules.application.
 import br.com.soluevo.microapplibrary.application.commom.di.modules.network.NetWorkModule
 import br.com.soluevo.microapplibrary.application.commom.di.modules.recyclerview.RecyclerViewAnimatedWithDividerModule
 import br.com.soluevo.microapplibrary.application.commom.utils.BindingFragment
+import br.com.soluevo.microapplibrary.application.fragments.products.products.adapter.GridAdapter
 import br.com.soluevo.microapplibrary.application.fragments.products.products.adapter.ProductsAdapter
 import br.com.soluevo.microapplibrary.databinding.ProductFragmentBinding
 import br.com.soluevo.microapplibrary.domain.Product
@@ -108,6 +109,7 @@ class ProductFragment : BindingFragment<ProductFragmentBinding>() {
     private fun initObservables() {
         mViewModel.successObserver.observe(viewLifecycleOwner, EventObserver {
             mAdapter.updateData(it)
+            productGridView.adapter = GridAdapter(it, requireContext())
         })
     }
 
