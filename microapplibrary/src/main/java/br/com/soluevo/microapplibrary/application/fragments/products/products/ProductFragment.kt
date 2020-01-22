@@ -76,6 +76,7 @@ class ProductFragment : BindingFragment<ProductFragmentBinding>() {
         listProductButton.setOnClickListener {
             productsListRecyclerView.visibility = View.VISIBLE
             productGridView.visibility = View.GONE
+
         }
 
         listProductGridButton.setOnClickListener {

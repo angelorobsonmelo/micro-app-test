@@ -16,7 +16,7 @@ class GridAdapter(private var mProducts: List<Product>, private val context: Con
     private val mLayoutInflater = LayoutInflater.from(context)
 
     override fun getView(p0: Int, p1: View?, p2: ViewGroup?): View {
-        val v = DataBindingUtil.inflate<ProductGridItemBinding>(
+        val binding = DataBindingUtil.inflate<ProductGridItemBinding>(
             mLayoutInflater,
             R.layout.product_grid_item,
             p2,
@@ -24,9 +24,9 @@ class GridAdapter(private var mProducts: List<Product>, private val context: Con
         )
 
 
-        v.product = mProducts[0]
+        binding.product = mProducts[0]
 
-        return v.root
+        return binding.root
     }
 
     override fun getItem(p0: Int): Any {

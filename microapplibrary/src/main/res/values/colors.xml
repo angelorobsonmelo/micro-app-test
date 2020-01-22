@@ -9,4 +9,5 @@
     <color name="black">#000000</color>
     <color name="blue">#103485</color>
     <color name="light_gray">#cfcdcd</color>
+    <color name="gray_divider">#e5e5e5</color>
 </resources>
