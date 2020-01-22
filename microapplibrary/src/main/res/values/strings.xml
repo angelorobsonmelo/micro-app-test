@@ -10,4 +10,15 @@
     <string name="cart">Carrinho</string>
     <string name="search">Search</string>
     <string name="filter">Filtro</string>
+
+    <string name="filters_spinner_prompt">Selecione uma opção</string>
+
+    <string-array name="filters_spinners_arrays">
+        <item>A - Z</item>
+        <item>Z - A</item>
+        <item>Popularidade</item>
+        <item>Menor Preço</item>
+        <item>Maior Preço</item>
+    </string-array>
+
 </resources>

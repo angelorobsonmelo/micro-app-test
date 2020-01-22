@@ -20,22 +20,36 @@
                 android:id="@+id/listProductButton"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginRight="25dp"
+                android:adjustViewBounds="true"
+                android:background="@android:color/transparent"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_products"
-                android:background="@android:color/transparent"
-                android:adjustViewBounds="true"
-                android:layout_marginRight="34dp"
                 android:text="@string/app_name" />
 
             <ImageButton
                 android:id="@+id/listProductGridButton"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:scaleType="fitCenter"
                 android:adjustViewBounds="true"
                 android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
                 android:src="@drawable/ic_grid_four_columns"
                 android:text="@string/app_name" />
+
+            <Spinner
+                android:id="@+id/productSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:entries="@array/filters_spinners_arrays"
+                android:prompt="@string/filters_spinner_prompt"
+                android:background="@drawable/spinner_border">
+
+            </Spinner>
 
         </LinearLayout>
 

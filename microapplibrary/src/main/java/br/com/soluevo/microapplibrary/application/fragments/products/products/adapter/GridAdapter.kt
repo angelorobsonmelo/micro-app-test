@@ -23,7 +23,6 @@ class GridAdapter(private var mProducts: List<Product>, private val context: Con
             false
         )
 
-
         binding.product = mProducts[0]
 
         return binding.root
