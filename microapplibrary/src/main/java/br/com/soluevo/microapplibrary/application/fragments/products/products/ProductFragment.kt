@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -59,31 +58,43 @@ class ProductFragment : BindingFragment<ProductFragmentBinding>() {
         initObservables()
         mViewModel.getProducts()
 
-        initStateButtonList()
+        buttonListRedIcon()
         initButtonsListClickListener()
     }
 
-    private fun initStateButtonList() {
-        listProductButton.setBackgroundColor(
-            ContextCompat.getColor(
-                requireContext(),
-                R.color.dark_red
-            )
-        )
-    }
-
-    fun initButtonsListClickListener() {
+    private fun initButtonsListClickListener() {
         listProductButton.setOnClickListener {
-            productsListRecyclerView.visibility = View.VISIBLE
-            productGridView.visibility = View.GONE
-
+            setUpListButtonClicked()
         }
 
         listProductGridButton.setOnClickListener {
-            productsListRecyclerView.visibility = View.GONE
-            productGridView.visibility = View.VISIBLE
+            setUpListGridButtonClicked()
         }
 
+    }
+
+    private fun setUpListGridButtonClicked() {
+        productsListRecyclerView.visibility = View.GONE
+        productGridView.visibility = View.VISIBLE
+
+        listProductButton.setImageResource(R.drawable.ic_products)
+        listProductGridButton.setImageResource(R.drawable.ic_grid_large)
+    }
+
+    private fun setUpListButtonClicked() {
+        productsListRecyclerView.visibility = View.VISIBLE
+        productGridView.visibility = View.GONE
+
+        listProductButton.setImageResource(R.drawable.ic_format_list_red)
+        listProductGridButton.setImageResource(R.drawable.ic_grid_four_columns)
+    }
+
+    private fun buttonListRedIcon() {
+        listProductButton.setImageResource(R.drawable.ic_format_list_red)
+    }
+
+    private fun buttonGridRedIcon() {
+        listProductButton.setImageResource(R.drawable.ic_grid_large)
     }
 
     private fun setUpDagger() {

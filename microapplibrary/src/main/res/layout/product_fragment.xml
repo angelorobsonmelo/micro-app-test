@@ -18,17 +18,23 @@
 
             <ImageButton
                 android:id="@+id/listProductButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:scaleType="fitCenter"
                 android:src="@drawable/ic_products"
+                android:background="@android:color/transparent"
+                android:adjustViewBounds="true"
+                android:layout_marginRight="34dp"
                 android:text="@string/app_name" />
 
             <ImageButton
                 android:id="@+id/listProductGridButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_products"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_grid_four_columns"
                 android:text="@string/app_name" />
 
         </LinearLayout>
