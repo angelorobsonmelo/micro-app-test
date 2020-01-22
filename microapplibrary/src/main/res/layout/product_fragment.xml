@@ -13,7 +13,8 @@
             android:id="@+id/calendarView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hardwareAccelerated="true">
+            android:background="@drawable/shadow"
+            android:padding="16dp">
 
             <ImageButton
                 android:id="@+id/listProductButton"
@@ -36,13 +37,11 @@
             android:id="@+id/productsListRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             tools:itemCount="2"
             tools:listitem="@layout/product_item" />
 
         <GridView
             android:id="@+id/productGridView"
-            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/gray_divider"
