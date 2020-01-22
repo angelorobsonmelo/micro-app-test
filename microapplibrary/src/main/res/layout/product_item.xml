@@ -22,7 +22,7 @@
             android:layout_height="137dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="8dp"
             android:src="@drawable/bike"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,6 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="32dp"
+            android:layout_marginEnd="8dp"
             android:text="@{product.title}"
             android:textColor="@color/black"
             android:textStyle="bold"
@@ -42,16 +43,26 @@
             app:layout_constraintTop_toTopOf="@+id/imageView2"
             tools:text="@string/app_name" />
 
-        <me.zhanghai.android.materialratingbar.MaterialRatingBar
+
+        <LinearLayout
             android:id="@+id/materialRatingBar"
-            style="@style/Widget.MaterialRatingBar.RatingBar"
+            style="?android:attr/ratingBarStyleSmall"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+            <RatingBar
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:stepSize="0.1" />
+
+        </LinearLayout>
 
 
         <TextView
@@ -62,6 +73,7 @@
             android:text="R$ 1.500,00"
             android:textColor="@color/dark_red"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/materialRatingBar"
             app:layout_constraintTop_toBottomOf="@+id/materialRatingBar"
@@ -71,9 +83,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="8dp"
             android:text="Ou 12x R$ 100"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textView3"
             app:layout_constraintTop_toBottomOf="@+id/textView3"
