@@ -27,6 +27,8 @@ class ProductDetailFragment : BindingFragment<ProductDetailFragmentBinding>() {
             mProduct = getSerializable("PRODUCT") as Product
         }
 
+        binding.product = mProduct
+
         setUpElemens()
     }
 
