@@ -9,8 +9,9 @@
     <ImageView
         android:id="@+id/iv_auto_image_slider"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop" />
+        android:layout_height="wrap_content"
+        android:src="@drawable/bike"
+        android:scaleType="fitXY" />
 
 
  <!--   <ImageView

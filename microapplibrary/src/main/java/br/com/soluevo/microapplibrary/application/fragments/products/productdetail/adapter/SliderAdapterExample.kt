@@ -25,7 +25,7 @@ class SliderAdapterExample(private var mPictures: List<Picture>) :
         }
 
         Picasso.get()
-            .load(mPictures[position].url)
+            .load(R.drawable.bike)
             .into(viewHolder.imageViewBackground)
     }
 
