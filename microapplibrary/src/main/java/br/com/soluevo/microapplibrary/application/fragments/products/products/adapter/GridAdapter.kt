@@ -10,7 +10,7 @@ import br.com.soluevo.microapplibrary.R
 import br.com.soluevo.microapplibrary.databinding.ProductGridItemBinding
 import br.com.soluevo.microapplibrary.domain.Product
 
-class GridAdapter(private var mProducts: List<Product>, private val context: Context) :
+class GridAdapter(private var mProducts: List<Product>, context: Context) :
     BaseAdapter() {
 
     private val mLayoutInflater = LayoutInflater.from(context)

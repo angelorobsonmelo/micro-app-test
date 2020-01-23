@@ -12,6 +12,7 @@
     <string name="filter">Filtro</string>
 
     <string name="filters_spinner_prompt">Selecione uma opção</string>
+    <string name="product_detail">DETALHES DO PRODUTO</string>
 
     <string-array name="filters_spinners_arrays">
         <item>A - Z</item>

@@ -32,5 +32,19 @@
         android:id="@+id/productFragment"
         android:name="br.com.soluevo.microapplibrary.application.fragments.products.products.ProductFragment"
         android:label="fragment_product"
-        tools:layout="@layout/product_fragment" />
+        tools:layout="@layout/product_fragment" >
+        <action
+            android:id="@+id/action_productFragment_to_productDetailFragment"
+            app:destination="@+id/productDetailFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+        <argument
+            android:name="PRODUCT"
+            app:argType="br.com.soluevo.microapplibrary.domain.Product" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="br.com.soluevo.microapplibrary.application.fragments.products.productdetail.ProductDetailFragment"
+        android:label="product_detail_fragment"
+        tools:layout="@layout/product_detail_fragment" />
 </navigation>

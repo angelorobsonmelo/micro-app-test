@@ -5,8 +5,11 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
+import android.widget.AdapterView
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.soluevo.microapplibrary.NavigationHostActivity
@@ -17,6 +20,7 @@ import br.com.soluevo.microapplibrary.application.commom.di.modules.application.
 import br.com.soluevo.microapplibrary.application.commom.di.modules.network.NetWorkModule
 import br.com.soluevo.microapplibrary.application.commom.di.modules.recyclerview.RecyclerViewAnimatedWithDividerModule
 import br.com.soluevo.microapplibrary.application.commom.utils.BindingFragment
+import br.com.soluevo.microapplibrary.application.components.product.ProductComponentClickListener
 import br.com.soluevo.microapplibrary.application.fragments.products.products.adapter.GridAdapter
 import br.com.soluevo.microapplibrary.application.fragments.products.products.adapter.ProductsAdapter
 import br.com.soluevo.microapplibrary.databinding.ProductFragmentBinding
@@ -44,7 +48,16 @@ class ProductFragment : BindingFragment<ProductFragmentBinding>() {
     lateinit var mRecyclerView: RecyclerView
 
     private var mProducts = listOf<Product>()
-    private val mAdapter = ProductsAdapter(mProducts)
+    private val mAdapter = ProductsAdapter(mProducts, object : ProductComponentClickListener {
+        override fun onclick(product: Product, position: Int) {
+            goToPrductDetail(product)
+        }
+
+        override fun onLongClick(product: Product, position: Int) {
+
+        }
+
+    })
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -122,7 +135,32 @@ class ProductFragment : BindingFragment<ProductFragmentBinding>() {
         mViewModel.successObserver.observe(viewLifecycleOwner, EventObserver {
             mAdapter.updateData(it)
             productGridView.adapter = GridAdapter(it, requireContext())
+            initGridItemListener(it)
         })
+    }
+
+    private fun initGridItemListener(products: List<Product>) {
+        productGridView.onItemClickListener = object : AdapterView.OnItemClickListener,
+            View.OnClickListener {
+            override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, id: Long) {
+                val product = products[id.toInt()]
+
+                goToPrductDetail(product)
+            }
+
+            override fun onClick(p0: View?) {
+
+            }
+
+        }
+    }
+
+    private fun goToPrductDetail(product: Product) {
+        val bundle = bundleOf("PRODUCT" to product)
+        findNavController().navigate(
+            R.id.action_productFragment_to_productDetailFragment,
+            bundle
+        )
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
