@@ -45,8 +45,8 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:entries="@array/filters_spinners_arrays"
                 android:prompt="@string/filters_spinner_prompt"
+                android:entries="@array/filters_spinners_arrays"
                 android:background="@drawable/spinner_border">
 
             </Spinner>
