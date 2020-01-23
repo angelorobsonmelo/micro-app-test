@@ -3,6 +3,7 @@ package br.com.soluevo.microapplibrary.application.fragments.products.productdet
 
 import android.graphics.Color
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import br.com.soluevo.microapplibrary.R
 import br.com.soluevo.microapplibrary.application.commom.utils.BindingFragment
 import br.com.soluevo.microapplibrary.application.fragments.products.productdetail.adapter.SliderAdapterExample
@@ -34,6 +35,111 @@ class ProductDetailFragment : BindingFragment<ProductDetailFragmentBinding>() {
 
     private fun setUpElemens() {
         setupSliderAdapter()
+        setUpButtonsSizeClickListener()
+    }
+
+    fun setUpButtonsSizeClickListener() {
+        seventeenButton.setOnClickListener {
+            binding.sizeTextView.text = "TAMANHO: 17"
+            setStateWhenClickInSeventeenButton()
+        }
+
+        nineteenButton.setOnClickListener {
+            binding.sizeTextView.text = "TAMANHO: 19"
+            setStateWhenClickInNineteenButton()
+        }
+
+        twentyOneButton.setOnClickListener {
+            binding.sizeTextView.text = "TAMANHO: 21"
+            setStateWhenClickInTwentyOneButton()
+        }
+    }
+
+    private fun setStateWhenClickInSeventeenButton() {
+        seventeenButton.setTextColor(
+            ContextCompat.getColor(
+                requireContext(),
+                R.color.white
+            )
+        )
+
+        seventeenButton.setBackgroundResource(R.drawable.border_button_size_selected)
+
+        nineteenButton.setTextColor(
+            ContextCompat.getColor(
+                requireContext(),
+                R.color.light_gray
+            )
+        )
+
+        nineteenButton.setBackgroundResource(R.drawable.border_button_size_unselected)
+
+        twentyOneButton.setTextColor(
+            ContextCompat.getColor(
+                requireContext(),
+                R.color.light_gray
+            )
+        )
+
+        twentyOneButton.setBackgroundResource(R.drawable.border_button_size_unselected)
+    }
+
+    private fun setStateWhenClickInNineteenButton() {
+        nineteenButton.setTextColor(
+            ContextCompat.getColor(
+                requireContext(),
+                R.color.white
+            )
+        )
+
+        nineteenButton.setBackgroundResource(R.drawable.border_button_size_selected)
+
+        seventeenButton.setTextColor(
+            ContextCompat.getColor(
+                requireContext(),
+                R.color.light_gray
+            )
+        )
+
+        seventeenButton.setBackgroundResource(R.drawable.border_button_size_unselected)
+
+        twentyOneButton.setTextColor(
+            ContextCompat.getColor(
+                requireContext(),
+                R.color.light_gray
+            )
+        )
+
+        twentyOneButton.setBackgroundResource(R.drawable.border_button_size_unselected)
+    }
+
+    private fun setStateWhenClickInTwentyOneButton() {
+        twentyOneButton.setTextColor(
+            ContextCompat.getColor(
+                requireContext(),
+                R.color.white
+            )
+        )
+
+        twentyOneButton.setBackgroundResource(R.drawable.border_button_size_selected)
+
+        seventeenButton.setTextColor(
+            ContextCompat.getColor(
+                requireContext(),
+                R.color.light_gray
+            )
+        )
+
+        seventeenButton.setBackgroundResource(R.drawable.border_button_size_unselected)
+
+        nineteenButton.setTextColor(
+            ContextCompat.getColor(
+                requireContext(),
+                R.color.light_gray
+            )
+        )
+
+        nineteenButton.setBackgroundResource(R.drawable.border_button_size_unselected)
     }
 
     private fun setupSliderAdapter() {

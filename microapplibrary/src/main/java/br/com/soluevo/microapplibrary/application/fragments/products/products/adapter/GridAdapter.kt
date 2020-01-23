@@ -7,10 +7,15 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import androidx.databinding.DataBindingUtil
 import br.com.soluevo.microapplibrary.R
+import br.com.soluevo.microapplibrary.application.components.product.ProductComponentClickListener
 import br.com.soluevo.microapplibrary.databinding.ProductGridItemBinding
 import br.com.soluevo.microapplibrary.domain.Product
 
-class GridAdapter(private var mProducts: List<Product>, context: Context) :
+class GridAdapter(
+    private var mProducts: List<Product>,
+    context: Context,
+    private val lister: ProductComponentClickListener
+) :
     BaseAdapter() {
 
     private val mLayoutInflater = LayoutInflater.from(context)
@@ -23,12 +28,18 @@ class GridAdapter(private var mProducts: List<Product>, context: Context) :
             false
         )
 
-        binding.product = mProducts[0]
+        val product = mProducts[p0]
+
+        binding.product = product
+        binding.constraintLayout.setOnClickListener {
+            lister.onclick(product, p0)
+        }
 
         return binding.root
     }
 
     override fun getItem(p0: Int): Any {
+
         return mProducts[p0]
     }
 

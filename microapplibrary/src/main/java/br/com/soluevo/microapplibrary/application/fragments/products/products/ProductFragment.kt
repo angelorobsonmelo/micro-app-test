@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
-import android.widget.AdapterView
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -106,10 +105,6 @@ class ProductFragment : BindingFragment<ProductFragmentBinding>() {
         listProductButton.setImageResource(R.drawable.ic_format_list_red)
     }
 
-    private fun buttonGridRedIcon() {
-        listProductButton.setImageResource(R.drawable.ic_grid_large)
-    }
-
     private fun setUpDagger() {
         val ac = activity as NavigationHostActivity
         val url = ac.getUrl()
@@ -134,25 +129,22 @@ class ProductFragment : BindingFragment<ProductFragmentBinding>() {
     private fun initObservables() {
         mViewModel.successObserver.observe(viewLifecycleOwner, EventObserver {
             mAdapter.updateData(it)
-            productGridView.adapter = GridAdapter(it, requireContext())
-            initGridItemListener(it)
+            setUpGridAdapter(it)
         })
     }
 
-    private fun initGridItemListener(products: List<Product>) {
-        productGridView.onItemClickListener = object : AdapterView.OnItemClickListener,
-            View.OnClickListener {
-            override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, id: Long) {
-                val product = products[id.toInt()]
+    private fun setUpGridAdapter(it: List<Product>) {
+        productGridView.adapter =
+            GridAdapter(it, requireContext(), object : ProductComponentClickListener {
+                override fun onclick(product: Product, position: Int) {
+                    goToPrductDetail(product)
+                }
 
-                goToPrductDetail(product)
-            }
+                override fun onLongClick(product: Product, position: Int) {
 
-            override fun onClick(p0: View?) {
+                }
 
-            }
-
-        }
+            })
     }
 
     private fun goToPrductDetail(product: Product) {
