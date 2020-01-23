@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import br.com.angelorobson.horizontalrecyclerviewimageslibrary.ImageClickListener
 import br.com.angelorobson.horizontalrecyclerviewimageslibrary.model.ItemImage
 import br.com.soluevo.microapplibrary.NavigationHostActivity
@@ -60,13 +61,6 @@ class HomeFragment : BindingFragment<HomeFragmentBinding>() {
 
     private fun setUpDagger() {
         val url = mActivity?.getUrl()
-
-        mActivity?.onBackPressedListener(object : OnBackPressedListener {
-            override fun onBackPressedClicked() {
-                mActivity?.finishActivity()
-            }
-
-        })
 
         DaggerFragmentComponentGeneric.builder()
             .contextModule(ContextModule(requireContext()))

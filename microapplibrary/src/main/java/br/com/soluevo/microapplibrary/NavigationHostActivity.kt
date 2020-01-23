@@ -72,15 +72,9 @@ class NavigationHostActivity : AppCompatActivity() {
         this.mOnBackPressedListener = onBackPressedListener
     }
 
-    fun finishActivity() {
-        finish()
-    }
 
     override fun onSupportNavigateUp(): Boolean {
-        mOnBackPressedListener?.apply {
-            onBackPressedClicked()
-        }
-
+       super.onBackPressed()
         return false
     }
 
