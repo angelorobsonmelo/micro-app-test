@@ -27,7 +27,14 @@
         android:id="@+id/homeFragment"
         android:name="br.com.soluevo.microapplibrary.application.fragments.home.HomeFragment"
         android:label="home_fragment"
-        tools:layout="@layout/home_fragment" />
+        tools:layout="@layout/home_fragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+        <argument
+            android:name="PRODUCT"
+            app:argType="br.com.soluevo.microapplibrary.domain.Product" />
+    </fragment>
     <fragment
         android:id="@+id/productFragment"
         android:name="br.com.soluevo.microapplibrary.application.fragments.products.products.ProductFragment"

@@ -4,6 +4,7 @@ package br.com.soluevo.microapplibrary.application.fragments.home
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
@@ -125,7 +126,7 @@ class HomeFragment : BindingFragment<HomeFragmentBinding>() {
 
         productComponent.setProducts(products, object : ProductComponentClickListener {
             override fun onclick(product: Product, position: Int) {
-
+                goToProductDetail(product)
             }
 
             override fun onLongClick(product: Product, position: Int) {
@@ -133,6 +134,11 @@ class HomeFragment : BindingFragment<HomeFragmentBinding>() {
             }
 
         })
+    }
+
+    private fun goToProductDetail(product: Product) {
+        val bundle = bundleOf("PRODUCT" to product)
+        findNavController().navigate(R.id.action_homeFragment_to_productDetailFragment, bundle)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
