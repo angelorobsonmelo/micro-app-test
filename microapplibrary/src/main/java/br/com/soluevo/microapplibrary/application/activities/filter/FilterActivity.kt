@@ -1,5 +1,6 @@
 package br.com.soluevo.microapplibrary.application.activities.filter
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
@@ -7,22 +8,23 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import br.com.soluevo.microapplibrary.R
+import br.com.soluevo.microapplibrary.application.activities.filter.category.FilterCategoryActivity
 import br.com.soluevo.microapplibrary.application.commom.utils.Constants
 import br.com.soluevo.microapplibrary.domain.Company
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
-import kotlinx.android.synthetic.main.activity_filterctivity.*
-import kotlinx.android.synthetic.main.host_navigation_activity.*
+import kotlinx.android.synthetic.main.activity_filter_ctivity.*
 import kotlinx.android.synthetic.main.host_navigation_activity.appbar
 import kotlinx.android.synthetic.main.host_navigation_activity.toolbar
 
 class FilterActivity : AppCompatActivity() {
 
     private lateinit var mToolbar: androidx.appcompat.widget.Toolbar
+    private lateinit var mCompany: Company
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_filterctivity)
+        setContentView(R.layout.activity_filter_ctivity)
         setUpElements()
     }
 
@@ -30,6 +32,27 @@ class FilterActivity : AppCompatActivity() {
         setUpToolbarBar()
         handleIntent()
 
+        initApplyFilterClickListener()
+        initCategoryFilterClickListener()
+    }
+
+    private fun initCategoryFilterClickListener() {
+        categoryTextInputLayout.setOnClickListener {
+            val bundle = Bundle()
+            val intent = Intent(this, FilterCategoryActivity::class.java).apply {
+
+                bundle.putSerializable(
+                    Constants.CompanyThemeConstant.EXTRA_COMPANY,
+                    mCompany
+                )
+                putExtras(bundle)
+            }
+
+            startActivityForResult(intent, 550)
+        }
+    }
+
+    private fun initApplyFilterClickListener() {
         applyFilterButton.setOnClickListener {
             finishActivity(5046)
             finish()
@@ -39,13 +62,13 @@ class FilterActivity : AppCompatActivity() {
     private fun handleIntent() {
         intent.apply {
             extras?.apply {
-                val company =
+                mCompany =
                     getSerializable(Constants.CompanyThemeConstant.EXTRA_COMPANY) as Company
-                val companyTheme = company.theme
+                val companyTheme = mCompany.theme
 
                 appbar.setBackgroundColor(Color.parseColor(companyTheme.bottomBarHex))
 
-                setImageInToolbarBar(company.imageUrl)
+                setImageInToolbarBar(mCompany.imageUrl)
 
             }
         }
