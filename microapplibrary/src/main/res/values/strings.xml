@@ -15,6 +15,7 @@
     <string name="product_detail">DETALHES DO PRODUTO</string>
     <string name="filters">Filtros</string>
     <string name="category">Categoria</string>
+    <string name="category_filter">CATEGORIA</string>
     <string name="size">Tamanho</string>
     <string name="color">Cor</string>
     <string name="gender">Genêro</string>
@@ -22,6 +23,7 @@
     <string name="price">Preço</string>
     <string name="results_count">1080 RESULTADOS</string>
     <string name="apply_filter">APLICAR FILTRO</string>
+    <string name="clear_fields">Limpar Filtro</string>
 
     <string-array name="filters_spinners_arrays">
         <item>A - Z</item>
