@@ -12,7 +12,7 @@ import br.com.soluevo.microapplibrary.R
 import br.com.soluevo.microapplibrary.domain.CheckBoxModel
 import java.util.*
 
-class CategoryAdapter(context: Context, private val data: ArrayList<CheckBoxModel>) :
+class CategoryAdapter(context: Context, private var data: ArrayList<CheckBoxModel>) :
     ArrayAdapter<CheckBoxModel>(context, R.layout.row_check_item) {
 
 
@@ -56,5 +56,13 @@ class CategoryAdapter(context: Context, private val data: ArrayList<CheckBoxMode
         viewHolder.txtName?.text = item.name
         viewHolder.checkBox!!.isChecked = item.checked
         return result
+    }
+
+    fun updateItems(dataModels: ArrayList<CheckBoxModel>) {
+        data.clear()
+        data.addAll(dataModels)
+        data = dataModels
+
+        notifyDataSetChanged()
     }
 }

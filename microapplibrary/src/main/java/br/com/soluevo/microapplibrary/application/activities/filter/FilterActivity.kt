@@ -95,6 +95,7 @@ class FilterActivity : AppCompatActivity() {
     ) {
         Picasso.get()
             .load(logo)
+            .resize(20, 20)
             .into(object : Target {
                 override fun onPrepareLoad(placeHolderDrawable: Drawable?) {
 
