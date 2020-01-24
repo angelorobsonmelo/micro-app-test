@@ -19,20 +19,16 @@
             android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar" >
-
+            app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar">
 
             <ImageView
                 android:id="@+id/logo_image"
-                android:layout_width="45dp"
+                android:layout_width="60dp"
                 android:layout_height="45dp"
-                android:src="@drawable/ic_home_black"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:scaleType="centerInside" />
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_home_black" />
 
         </androidx.appcompat.widget.Toolbar>
-
 
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -60,9 +56,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:labelVisibilityMode="labeled"
         app:itemIconTint="@color/nav_items_colors"
         app:itemTextColor="@color/nav_items_colors"
+        app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_navigation_menu" />
 
     <!-- <com.google.android.material.bottomnavigation.BottomNavigationView

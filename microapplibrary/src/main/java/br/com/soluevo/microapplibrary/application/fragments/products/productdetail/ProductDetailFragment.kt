@@ -38,7 +38,7 @@ class ProductDetailFragment : BindingFragment<ProductDetailFragmentBinding>() {
         setUpButtonsSizeClickListener()
     }
 
-    fun setUpButtonsSizeClickListener() {
+    private fun setUpButtonsSizeClickListener() {
         seventeenButton.setOnClickListener {
             binding.sizeTextView.text = "TAMANHO: 17"
             setStateWhenClickInSeventeenButton()
