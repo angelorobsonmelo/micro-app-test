@@ -1,9 +1,11 @@
 package br.com.soluevo.microapplibrary.application.fragments.products.products
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
@@ -13,12 +15,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.soluevo.microapplibrary.NavigationHostActivity
 import br.com.soluevo.microapplibrary.R
+import br.com.soluevo.microapplibrary.application.activities.filter.FilterActivity
 import br.com.soluevo.microapplibrary.application.commom.EventObserver
 import br.com.soluevo.microapplibrary.application.commom.di.components.fragments.DaggerFragmentGenericWithRecyclerViewComponent
 import br.com.soluevo.microapplibrary.application.commom.di.modules.application.ContextModule
 import br.com.soluevo.microapplibrary.application.commom.di.modules.network.NetWorkModule
 import br.com.soluevo.microapplibrary.application.commom.di.modules.recyclerview.RecyclerViewAnimatedWithDividerModule
 import br.com.soluevo.microapplibrary.application.commom.utils.BindingFragment
+import br.com.soluevo.microapplibrary.application.commom.utils.Constants
 import br.com.soluevo.microapplibrary.application.components.product.ProductComponentClickListener
 import br.com.soluevo.microapplibrary.application.fragments.products.products.adapter.GridAdapter
 import br.com.soluevo.microapplibrary.application.fragments.products.products.adapter.ProductsAdapter
@@ -148,7 +152,10 @@ class ProductFragment : BindingFragment<ProductFragmentBinding>() {
     }
 
     private fun goToPrductDetail(product: Product) {
-        val bundle = bundleOf("PRODUCT" to product)
+        val bundle = bundleOf(
+            "PRODUCT" to product
+        )
+
         findNavController().navigate(
             R.id.action_productFragment_to_productDetailFragment,
             bundle
@@ -160,9 +167,37 @@ class ProductFragment : BindingFragment<ProductFragmentBinding>() {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_filter -> {
+                val ac = activity as NavigationHostActivity
+
+                val bundle = Bundle()
+                val intent = Intent(context, FilterActivity::class.java).apply {
+
+                    bundle.putSerializable(
+                        Constants.CompanyThemeConstant.EXTRA_COMPANY,
+                        ac.getCompany()
+                    )
+                    putExtras(bundle)
+                }
+
+                startActivityForResult(intent, 550)
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         mViewModel.disposables.clear()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        print(resultCode)
     }
 
 }

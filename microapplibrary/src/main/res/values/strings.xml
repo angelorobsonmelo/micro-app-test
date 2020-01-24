@@ -13,6 +13,15 @@
 
     <string name="filters_spinner_prompt">Selecione uma opção</string>
     <string name="product_detail">DETALHES DO PRODUTO</string>
+    <string name="filters">Filtros</string>
+    <string name="category">Categoria</string>
+    <string name="size">Tamanho</string>
+    <string name="color">Cor</string>
+    <string name="gender">Genêro</string>
+    <string name="brand">Brand</string>
+    <string name="price">Preço</string>
+    <string name="results_count">1080 RESULTADOS</string>
+    <string name="apply_filter">APLICAR FILTRO</string>
 
     <string-array name="filters_spinners_arrays">
         <item>A - Z</item>
