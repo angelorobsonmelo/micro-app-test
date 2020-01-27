@@ -93,20 +93,20 @@ class ProductFragment : BindingFragment<ProductFragmentBinding>() {
         productsListRecyclerView.visibility = View.GONE
         productGridView.visibility = View.VISIBLE
 
-        listProductButton.setImageResource(R.drawable.ic_products)
-        listProductGridButton.setImageResource(R.drawable.ic_grid_large)
+        listProductButton.setImageResource(R.drawable.ic_list_unselected)
+        listProductGridButton.setImageResource(R.drawable.ic_grid_selected)
     }
 
     private fun setUpListButtonClicked() {
         productsListRecyclerView.visibility = View.VISIBLE
         productGridView.visibility = View.GONE
 
-        listProductButton.setImageResource(R.drawable.ic_format_list_red)
-        listProductGridButton.setImageResource(R.drawable.ic_grid_four_columns)
+        listProductButton.setImageResource(R.drawable.ic_list_selected)
+        listProductGridButton.setImageResource(R.drawable.ic_grid_unselected)
     }
 
     private fun buttonListRedIcon() {
-        listProductButton.setImageResource(R.drawable.ic_format_list_red)
+        listProductButton.setImageResource(R.drawable.ic_list_selected)
     }
 
     private fun setUpDagger() {
