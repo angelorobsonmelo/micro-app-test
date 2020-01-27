@@ -21,12 +21,6 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar">
 
-            <ImageView
-                android:id="@+id/logo_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scaleType="fitXY"
-                android:src="@drawable/ic_home_black" />
 
         </androidx.appcompat.widget.Toolbar>
 

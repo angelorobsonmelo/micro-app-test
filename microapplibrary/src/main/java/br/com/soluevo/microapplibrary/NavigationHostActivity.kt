@@ -2,9 +2,9 @@ package br.com.soluevo.microapplibrary
 
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
@@ -20,7 +20,7 @@ class NavigationHostActivity : AppCompatActivity() {
 
     private var url = ""
     private var mOnBackPressedListener: OnBackPressedListener? = null
-    private var company: Company? = null
+    private var mCompany: Company? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,8 +28,8 @@ class NavigationHostActivity : AppCompatActivity() {
 
         intent.apply {
             extras?.apply {
-                company = getSerializable(EXTRA_COMPANY) as Company
-                val companyTheme = company?.theme
+                mCompany = getSerializable(EXTRA_COMPANY) as Company
+                val companyTheme = mCompany?.theme
                 url = getString(Constants.EXTRA_CONSTANTS.URL_BASE, "")
 
                 appbar.setBackgroundColor(Color.parseColor(companyTheme?.toolbarHex))
@@ -38,11 +38,27 @@ class NavigationHostActivity : AppCompatActivity() {
 
         setUpImageLogo()
         setUpBottomNavigation()
+        setUpToolbarBar()
+    }
+
+
+    private fun setUpToolbarBar() {
+        val toolbar = toolbar
+
+        setSupportActionBar(toolbar)
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+            setDisplayShowTitleEnabled(false)
+        }
+
+        appbar.setBackgroundColor(Color.parseColor(mCompany?.theme?.toolbarHex))
+        setUpImageLogo()
     }
 
     private fun setUpImageLogo() {
         Picasso.get()
-            .load(company?.imageUrl)
+            .load(mCompany?.imageUrl)
             .into(object : Target {
                 override fun onPrepareLoad(placeHolderDrawable: Drawable?) {
 
@@ -53,8 +69,8 @@ class NavigationHostActivity : AppCompatActivity() {
                 }
 
                 override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
-                    val logo = logo_image
-                    logo.setImageBitmap(bitmap)
+                    val drawImage = BitmapDrawable(resources, bitmap)
+                    supportActionBar?.setLogo(drawImage)
                 }
 
             })
@@ -74,10 +90,10 @@ class NavigationHostActivity : AppCompatActivity() {
 
 
     override fun onSupportNavigateUp(): Boolean {
-       super.onBackPressed()
+        super.onBackPressed()
         return false
     }
 
-    fun getCompany() = company
+    fun getCompany() = mCompany
 
 }
