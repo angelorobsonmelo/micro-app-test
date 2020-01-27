@@ -7,7 +7,8 @@ data class Product(
     val price: Double,
     val title: String,
     val description: String,
-    val pictures: List<Picture>
+    val pictures: List<Picture>,
+    val imagePreviewUrl: String
 ) : Serializable
 
 data class Picture(

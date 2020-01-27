@@ -79,12 +79,12 @@ class HomeFragment : BindingFragment<HomeFragmentBinding>() {
         val banner = Banner
 
         val urls: MutableList<String> = ArrayList()
-        urls.add("http://img0.imgtn.bdimg.com/it/u=1352823040,1166166164&fm=27&gp=0.jpg")
-        urls.add("http://img3.imgtn.bdimg.com/it/u=2293177440,3125900197&fm=27&gp=0.jpg")
-        urls.add("http://img3.imgtn.bdimg.com/it/u=3967183915,4078698000&fm=27&gp=0.jpg")
-        urls.add("http://img0.imgtn.bdimg.com/it/u=3184221534,2238244948&fm=27&gp=0.jpg")
-        urls.add("http://img4.imgtn.bdimg.com/it/u=1794621527,1964098559&fm=27&gp=0.jpg")
-        urls.add("http://img4.imgtn.bdimg.com/it/u=1243617734,335916716&fm=27&gp=0.jpg")
+        urls.add("https://i.imgur.com/q2uP1vi.png")
+        urls.add("https://i.imgur.com/q2uP1vi.png")
+        urls.add("https://i.imgur.com/q2uP1vi.png")
+        urls.add("https://i.imgur.com/q2uP1vi.png")
+        urls.add("https://i.imgur.com/q2uP1vi.png")
+        urls.add("https://i.imgur.com/q2uP1vi.png")
 
         val webBannerAdapter = BaseBannerAdapter(requireContext(), urls)
         webBannerAdapter.setOnBannerItemClickListener {

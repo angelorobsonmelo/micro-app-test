@@ -16,7 +16,7 @@ class ProductComponentViewHolder(private val v: View) : RecyclerView.ViewHolder(
     ) {
         Picasso
             .get()
-            .load(product.pictures[0].url)
+            .load(product.imagePreviewUrl)
             .into(itemView.productComponentImageView)
 
         itemView.productTitleTextView.text = product.title
