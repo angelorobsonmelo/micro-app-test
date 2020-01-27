@@ -32,7 +32,7 @@ class NavigationHostActivity : AppCompatActivity() {
                 val companyTheme = company?.theme
                 url = getString(Constants.EXTRA_CONSTANTS.URL_BASE, "")
 
-                appbar.setBackgroundColor(Color.parseColor(companyTheme?.bottomBarHex))
+                appbar.setBackgroundColor(Color.parseColor(companyTheme?.toolbarHex))
             }
         }
 

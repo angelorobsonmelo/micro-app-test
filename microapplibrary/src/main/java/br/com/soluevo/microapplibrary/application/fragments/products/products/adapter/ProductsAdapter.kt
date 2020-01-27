@@ -18,6 +18,7 @@ class ProductsAdapter(
         binding.run {
             val product = mProducts[position]
             this.product = product
+            this.imageUrl = product.pictures.first().url
 
             constraintLayout.setOnClickListener {
                 listener.onclick(product, position)
