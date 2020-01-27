@@ -59,8 +59,35 @@
                 android:id="@+id/mostWantedProduct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginTop="16dp" />
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp" />
+
+            <View style="@style/Divider" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/dark_red"
+                android:clickable="false"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="@string/top_selling_products"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Banner" />
+
+            <br.com.soluevo.microapplibrary.application.components.product.ProductComponent
+                android:id="@+id/topSellingProducts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp" />
 
         </LinearLayout>
 

@@ -24,6 +24,7 @@
     <string name="results_count">1080 RESULTADOS</string>
     <string name="apply_filter">APLICAR FILTRO</string>
     <string name="clear_fields">Limpar Filtro</string>
+    <string name="top_selling_products">PRODUTOS MAIS VENDIDOS</string>
 
     <string-array name="filters_spinners_arrays">
         <item>A - Z</item>

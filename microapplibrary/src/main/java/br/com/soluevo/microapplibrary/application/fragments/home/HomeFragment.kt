@@ -17,7 +17,6 @@ import br.com.soluevo.microapplibrary.application.commom.di.components.fragments
 import br.com.soluevo.microapplibrary.application.commom.di.modules.application.ContextModule
 import br.com.soluevo.microapplibrary.application.commom.di.modules.network.NetWorkModule
 import br.com.soluevo.microapplibrary.application.commom.utils.BindingFragment
-import br.com.soluevo.microapplibrary.application.commom.utils.listeners.OnBackPressedListener
 import br.com.soluevo.microapplibrary.application.components.product.ProductComponentClickListener
 import br.com.soluevo.microapplibrary.application.fragments.products.products.ProductsViewModel
 import br.com.soluevo.microapplibrary.databinding.HomeFragmentBinding
@@ -97,6 +96,7 @@ class HomeFragment : BindingFragment<HomeFragmentBinding>() {
         mViewModel.successObserver.observe(viewLifecycleOwner, EventObserver {
             setUpCompanyFilters()
             setUpMostWantedProduct(it)
+            setUpTopSallingProduct(it)
         })
     }
 
@@ -125,6 +125,21 @@ class HomeFragment : BindingFragment<HomeFragmentBinding>() {
         val productComponent = mostWantedProduct
 
         productComponent.setProducts(products, object : ProductComponentClickListener {
+            override fun onclick(product: Product, position: Int) {
+                goToProductDetail(product)
+            }
+
+            override fun onLongClick(product: Product, position: Int) {
+
+            }
+
+        })
+    }
+
+    private fun setUpTopSallingProduct(products: List<Product>) {
+        val productComponent = topSellingProducts
+
+        topSellingProducts.setProducts(products, object : ProductComponentClickListener {
             override fun onclick(product: Product, position: Int) {
                 goToProductDetail(product)
             }
