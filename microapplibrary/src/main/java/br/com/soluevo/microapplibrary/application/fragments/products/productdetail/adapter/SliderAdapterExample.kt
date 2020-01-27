@@ -24,8 +24,10 @@ class SliderAdapterExample(private var mPictures: List<Picture>) :
         viewHolder.itemView.setOnClickListener {
         }
 
+        val picture = mPictures[position]
+
         Picasso.get()
-            .load(R.drawable.bike)
+            .load(picture.url)
             .into(viewHolder.imageViewBackground)
     }
 

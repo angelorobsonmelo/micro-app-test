@@ -145,7 +145,7 @@ class ProductDetailFragment : BindingFragment<ProductDetailFragmentBinding>() {
     private fun setupSliderAdapter() {
         val picturesMock = ArrayList<Picture>()
         for (i in 0..4) {
-            picturesMock.add(Picture(i, "ff", "fff"))
+            picturesMock.add(Picture(i, "ff", mProduct?.pictures?.first()?.url!!))
         }
 
         mProduct?.pictures?.apply {

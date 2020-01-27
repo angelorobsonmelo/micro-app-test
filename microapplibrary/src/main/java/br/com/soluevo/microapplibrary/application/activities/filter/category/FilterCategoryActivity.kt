@@ -24,14 +24,20 @@ class FilterCategoryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_filter_category)
-
         setUpElements()
     }
 
     private fun setUpElements() {
-        handleIntent()
         setUpToolbarBar()
+        handleIntent()
         setUpListViewCheck()
+        initApplyFilterClickListener()
+    }
+
+    private fun initApplyFilterClickListener() {
+        applyFilterButton.setOnClickListener {
+            finish()
+        }
     }
 
     private fun setUpListViewCheck() {
@@ -93,7 +99,7 @@ class FilterCategoryActivity : AppCompatActivity() {
                     getSerializable(Constants.CompanyThemeConstant.EXTRA_COMPANY) as Company
                 val companyTheme = mCompany.theme
 
-                appbar.setBackgroundColor(Color.parseColor(companyTheme.bottomBarHex))
+                appbar.setBackgroundColor(Color.parseColor(companyTheme.toolbarHex))
 
                 setImageInToolbarBar(mCompany.imageUrl)
             }
@@ -105,7 +111,6 @@ class FilterCategoryActivity : AppCompatActivity() {
     ) {
         Picasso.get()
             .load(logo)
-            .resize(20, 20)
             .into(object : Target {
                 override fun onPrepareLoad(placeHolderDrawable: Drawable?) {
 

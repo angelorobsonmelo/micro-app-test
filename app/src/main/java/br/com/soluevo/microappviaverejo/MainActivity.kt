@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
             1,
             "Company name",
             "https://static.netshoes.com.br/r0.0.390.13/netshoesbr/images/share.png",
+            "",
             theme,
             companyFilters
         )
