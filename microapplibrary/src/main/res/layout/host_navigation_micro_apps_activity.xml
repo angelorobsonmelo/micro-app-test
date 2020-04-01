@@ -40,7 +40,7 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="?attr/actionBarSize"
             app:defaultNavHost="true"
-            app:navGraph="@navigation/navigation_graph"
+            app:navGraph="@navigation/navigation_graph_micro_app"
             tools:layout="@layout/home_fragment" />
 
     </FrameLayout>
