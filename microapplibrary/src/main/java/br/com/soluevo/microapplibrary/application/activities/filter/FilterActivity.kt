@@ -14,8 +14,8 @@ import br.com.soluevo.microapplibrary.domain.Company
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
 import kotlinx.android.synthetic.main.activity_filter_ctivity.*
-import kotlinx.android.synthetic.main.host_navigation_activity.appbar
-import kotlinx.android.synthetic.main.host_navigation_activity.toolbar
+import kotlinx.android.synthetic.main.host_navigation_micro_apps_activity.appbar
+import kotlinx.android.synthetic.main.host_navigation_micro_apps_activity.toolbar
 
 class FilterActivity : AppCompatActivity() {
 

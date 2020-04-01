@@ -10,7 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
-import kotlinx.android.synthetic.main.host_navigation_activity.*
+import kotlinx.android.synthetic.main.host_navigation_micro_apps_activity.*
 import java.lang.Exception
 
 

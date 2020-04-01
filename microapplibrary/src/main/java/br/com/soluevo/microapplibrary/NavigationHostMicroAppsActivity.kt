@@ -14,7 +14,7 @@ import br.com.soluevo.microapplibrary.application.commom.utils.listeners.OnBackP
 import br.com.soluevo.microapplibrary.domain.Company
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
-import kotlinx.android.synthetic.main.host_navigation_activity.*
+import kotlinx.android.synthetic.main.host_navigation_micro_apps_activity.*
 
 class NavigationHostMicroAppsActivity : AppCompatActivity() {
 
@@ -24,7 +24,7 @@ class NavigationHostMicroAppsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.host_navigation_activity)
+        setContentView(R.layout.host_navigation_micro_apps_activity)
 
         intent.apply {
             extras?.apply {
