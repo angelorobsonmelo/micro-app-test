@@ -8,11 +8,12 @@ import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import br.com.soluevo.microapplibrary.NavigationHostActivity
+import br.com.soluevo.microapplibrary.NavigationHostMicroAppsActivity
 import br.com.soluevo.microapplibrary.R
 import br.com.soluevo.microapplibrary.application.commom.EventObserver
 import br.com.soluevo.microapplibrary.application.commom.di.components.fragments.DaggerCustomViewWithSimpleRecyclerViewHorizontalComponent
@@ -79,7 +80,7 @@ class CompaniesComponent(context: Context, var attrs: AttributeSet) : LinearLayo
 
     private fun goToNavHost(company: Company) {
         val bundle = Bundle()
-        val intent = Intent(context, NavigationHostActivity::class.java).apply {
+        val intent = Intent(context, NavigationHostMicroAppsActivity::class.java).apply {
 
             bundle.putSerializable(Constants.CompanyThemeConstant.EXTRA_COMPANY, company)
             bundle.putString(
@@ -132,6 +133,23 @@ class CompaniesComponent(context: Context, var attrs: AttributeSet) : LinearLayo
         })
 
         viewModel?.errorObserver?.observe(activity, EventObserver {
+            print("ff")
+        })
+
+    }
+
+    fun getCompanies(fragment: Fragment) {
+        viewModel = ViewModelProviders.of(fragment, mFactory)[CompaniesViewModel::class.java]
+        viewModel?.getCompanies()
+
+        binding.lifecycleOwner = fragment
+//        binding.viewModel = viewModel
+
+        viewModel?.successObserver?.observe(fragment, EventObserver {
+            mAdapter.updateItems(it)
+        })
+
+        viewModel?.errorObserver?.observe(fragment, EventObserver {
             print("ff")
         })
 

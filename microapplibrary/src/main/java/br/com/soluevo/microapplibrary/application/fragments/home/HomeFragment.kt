@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import br.com.angelorobson.horizontalrecyclerviewimageslibrary.ImageClickListener
 import br.com.angelorobson.horizontalrecyclerviewimageslibrary.model.ItemImage
-import br.com.soluevo.microapplibrary.NavigationHostActivity
+import br.com.soluevo.microapplibrary.NavigationHostMicroAppsActivity
 import br.com.soluevo.microapplibrary.R
 import br.com.soluevo.microapplibrary.application.commom.EventObserver
 import br.com.soluevo.microapplibrary.application.commom.di.components.fragments.DaggerFragmentComponentGeneric
@@ -38,7 +38,7 @@ class HomeFragment : BindingFragment<HomeFragmentBinding>() {
     }
 
     private var mProducts = listOf<Product>()
-    private var mActivity: NavigationHostActivity? = null
+    private var mMicroAppsActivity: NavigationHostMicroAppsActivity? = null
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -47,20 +47,20 @@ class HomeFragment : BindingFragment<HomeFragmentBinding>() {
     }
 
     private fun setUpElements() {
-        mActivity = activity as NavigationHostActivity
+        mMicroAppsActivity = activity as NavigationHostMicroAppsActivity
         setUpDagger()
         setUpDataBinding()
         mViewModel.getProducts()
         initObservables()
         setUpBanner()
 
-        mActivity?.getCompany()?.imageUrl?.apply {
+        mMicroAppsActivity?.getCompany()?.imageUrl?.apply {
             showToolbarWithDisplayArrowBackAndLogo(this)
         }
     }
 
     private fun setUpDagger() {
-        val url = mActivity?.getUrl()
+        val url = mMicroAppsActivity?.getUrl()
 
         DaggerFragmentComponentGeneric.builder()
             .contextModule(ContextModule(requireContext()))
@@ -101,7 +101,7 @@ class HomeFragment : BindingFragment<HomeFragmentBinding>() {
     }
 
     private fun setUpCompanyFilters() {
-        val company = mActivity?.getCompany()
+        val company = mMicroAppsActivity?.getCompany()
 
         val filters = company?.companyFilters?.map { filter ->
             ItemImage(filter.id, filter.name, filter.imageUrl)

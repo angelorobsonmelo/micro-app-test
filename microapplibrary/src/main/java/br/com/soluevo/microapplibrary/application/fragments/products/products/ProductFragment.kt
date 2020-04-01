@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import br.com.soluevo.microapplibrary.NavigationHostActivity
+import br.com.soluevo.microapplibrary.NavigationHostMicroAppsActivity
 import br.com.soluevo.microapplibrary.R
 import br.com.soluevo.microapplibrary.application.activities.filter.FilterActivity
 import br.com.soluevo.microapplibrary.application.commom.EventObserver
@@ -110,7 +110,7 @@ class ProductFragment : BindingFragment<ProductFragmentBinding>() {
     }
 
     private fun setUpDagger() {
-        val ac = activity as NavigationHostActivity
+        val ac = activity as NavigationHostMicroAppsActivity
         val url = ac.getUrl()
 
         DaggerFragmentGenericWithRecyclerViewComponent.builder()
@@ -170,7 +170,7 @@ class ProductFragment : BindingFragment<ProductFragmentBinding>() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_filter -> {
-                val ac = activity as NavigationHostActivity
+                val ac = activity as NavigationHostMicroAppsActivity
 
                 val bundle = Bundle()
                 val intent = Intent(context, FilterActivity::class.java).apply {

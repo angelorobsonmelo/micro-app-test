@@ -16,7 +16,7 @@ import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
 import kotlinx.android.synthetic.main.host_navigation_activity.*
 
-class NavigationHostActivity : AppCompatActivity() {
+class NavigationHostMicroAppsActivity : AppCompatActivity() {
 
     private var url = ""
     private var mOnBackPressedListener: OnBackPressedListener? = null
