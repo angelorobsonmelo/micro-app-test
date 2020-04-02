@@ -157,7 +157,7 @@ class HomeFragment : BindingFragment<HomeFragmentBinding>() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_search, menu)
+        inflater.inflate(R.menu.menu_search_micro_app, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 

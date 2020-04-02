@@ -163,7 +163,7 @@ class ProductFragment : BindingFragment<ProductFragmentBinding>() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_filter, menu)
+        inflater.inflate(R.menu.menu_filter_micro_app, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 

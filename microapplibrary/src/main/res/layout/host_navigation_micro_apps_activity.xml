@@ -53,7 +53,7 @@
         app:itemIconTint="@color/nav_items_colors"
         app:itemTextColor="@color/nav_items_colors"
         app:labelVisibilityMode="labeled"
-        app:menu="@menu/bottom_navigation_menu" />
+        app:menu="@menu/bottom_navigation_micro_app_menu" />
 
     <!-- <com.google.android.material.bottomnavigation.BottomNavigationView
          android:id="@+id/bottomNavigation"
@@ -63,7 +63,7 @@
          app:itemIconTint="@color/nav_items_colors"
          app:itemTextColor="@color/nav_items_colors"
          app:labelVisibilityMode="labeled"
-         app:menu="@menu/bottom_navigation_menu" />-->
+         app:menu="@menu/bottom_navigation_micro_app_menu" />-->
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
